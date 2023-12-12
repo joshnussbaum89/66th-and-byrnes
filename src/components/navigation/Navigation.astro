@@ -1,0 +1,21 @@
+---
+import Desktop from './Desktop.astro'
+import Mobile from './Mobile.astro'
+---
+
+<nav>
+  <Desktop />
+  <Mobile />
+</nav>
+
+<style>
+  nav {
+    padding: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    nav {
+      padding: 2rem;
+    }
+  }
+</style>

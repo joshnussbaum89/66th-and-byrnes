@@ -1,0 +1,162 @@
+<div id="mobile-nav" class="mobile-nav">
+  <h1><a href="/">66th & Byrnes</a></h1>
+  <div id="hamburger" class="hamburger">
+    <div class="top"></div>
+    <div class="middle"></div>
+    <div class="bottom"></div>
+  </div>
+  <div class="mobile-nav-overlay">
+    <ul>
+      <li><a class="site-link" href="/services" aria-label="Services">Services</a></li>
+      <li><a class="site-link" href="/work" aria-label="Work">Work</a></li>
+      <li><a class="site-link" href="/about" aria-label="About">About</a></li>
+    </ul>
+  </div>
+</div>
+
+<style>
+  .mobile-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .mobile-nav {
+      display: none;
+    }
+  }
+
+  .hamburger {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+    height: 2rem;
+    z-index: 4;
+    cursor: pointer;
+  }
+
+  .hamburger .top,
+  .hamburger .middle,
+  .hamburger .bottom {
+    height: 2px;
+    background: var(--color-green-200);
+    border-radius: 5px;
+    transition: all var(--transition-normal);
+  }
+
+  .hamburger .top,
+  .hamburger .bottom {
+    width: 32px;
+  }
+
+  .hamburger .top {
+    transform: translateY(-4px);
+  }
+
+  .hamburger .middle {
+    width: 42px;
+    align-self: flex-end;
+  }
+
+  .hamburger .bottom {
+    transform: translateY(4px);
+  }
+
+  .hamburger.active .top {
+    transform: translateY(2px) rotate(45deg);
+  }
+
+  .hamburger.active .middle {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+
+  .hamburger.active .bottom {
+    transform: translateY(-2px) rotate(-45deg);
+  }
+
+  .mobile-nav-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    opacity: 0;
+    z-index: -1;
+    visibility: hidden;
+    background-color: var(--color-white-transparent);
+    backdrop-filter: saturate(180%) blur(5px);
+    transition:
+      opacity var(--transition-normal),
+      visibility 0s var(--transition-normal),
+      z-index 0s var(--transition-normal);
+  }
+
+  .hamburger.active + .mobile-nav-overlay {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity var(--transition-normal);
+    z-index: 3;
+  }
+
+  .mobile-nav-overlay ul {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .mobile-nav-overlay ul li {
+    opacity: 0;
+    transform: translateY(1rem);
+    transition: all var(--transition-normal) 0.3s;
+  }
+  .mobile-nav-overlay ul li:nth-of-type(2) {
+    transition: all var(--transition-normal) 0.4s;
+  }
+  .mobile-nav-overlay ul li:nth-of-type(3) {
+    transition: all var(--transition-normal) 0.5s;
+  }
+
+  .hamburger.active + .mobile-nav-overlay ul li {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .mobile-nav-overlay li {
+    font-size: var(--size-lg);
+    margin-bottom: 2rem;
+  }
+</style>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const body = document.querySelector('body') as HTMLBodyElement
+    const hamburger = document.getElementById('hamburger') as HTMLDivElement
+    const mobileNavItems = document.querySelectorAll('.mobile-nav-overlay li')
+    let overlayDisplayed = false
+
+    function handleMobileNavigationOnClick() {
+      overlayDisplayed = !overlayDisplayed
+      body.setAttribute('data-overlay-displayed', `${overlayDisplayed}`)
+      hamburger.classList.toggle('active')
+    }
+
+    function handleMobileNavigationOnResize() {
+      if (window.innerWidth >= 768) {
+        overlayDisplayed = false
+        body.setAttribute('data-overlay-displayed', `${overlayDisplayed}`)
+        hamburger.classList.remove('active')
+      }
+    }
+
+    hamburger.addEventListener('click', handleMobileNavigationOnClick)
+    window.addEventListener('resize', handleMobileNavigationOnResize)
+    mobileNavItems.forEach((item) => item.addEventListener('click', handleMobileNavigationOnClick))
+  })
+</script>
