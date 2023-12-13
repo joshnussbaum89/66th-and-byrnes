@@ -1,6 +1,9 @@
+---
+import Logo from '../Logo.astro'
+---
+
 <div id="desktop-nav" class="desktop-nav">
-  <!-- TODO: Replace with logo -->
-  <h1><a href="/">66th & Byrnes</a></h1>
+  <Logo />
   <ul>
     <li><a class="site-link" href="/services" aria-label="Services">Services</a></li>
     <li><a class="site-link" href="/work" aria-label="Work">Work</a></li>
@@ -19,18 +22,22 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 2rem;
+      gap: clamp(2rem, 5vw, 4rem);
       width: 100%;
       z-index: 2;
     }
 
+    .desktop-nav a {
+      display: inline-block;
+    }
+
     .desktop-nav ul {
       display: flex;
-      gap: 2rem;
+      gap: clamp(2rem, 5vw, 4rem);
     }
 
     .desktop-nav li {
-      font-size: var(--size-sm);
+      font-size: clamp(var(--size-xs), 2vw, var(--size-sm));
     }
   }
 </style>

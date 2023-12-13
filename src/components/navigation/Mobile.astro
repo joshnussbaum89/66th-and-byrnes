@@ -1,6 +1,9 @@
+---
+import Logo from '../Logo.astro'
+---
+
 <div id="mobile-nav" class="mobile-nav">
-  <!-- TODO: Replace with logo -->
-  <h1><a href="/">66th & Byrnes</a></h1>
+  <Logo />
   <div id="hamburger" class="hamburger">
     <div class="top"></div>
     <div class="middle"></div>
@@ -27,10 +30,6 @@
     .mobile-nav {
       display: none;
     }
-  }
-
-  .mobile-nav h1 {
-    z-index: 4;
   }
 
   .hamburger {
@@ -132,7 +131,7 @@
   .mobile-nav-overlay ul li:nth-of-type(3) {
     transition: all var(--transition-normal) 0.5s;
   }
-  
+
   .mobile-nav-overlay ul li:nth-of-type(4) {
     position: absolute;
     bottom: 2rem;

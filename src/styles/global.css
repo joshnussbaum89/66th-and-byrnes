@@ -5,7 +5,7 @@
 
   /* Fonts */
   --font-heading: 'Lora', serif;
-  --font-body: 'Inter', sans-serif;
+  --font-body: 'Ubuntu', sans-serif;
 
   /* Font Sizes */
 
@@ -111,6 +111,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow: auto;
+  letter-spacing: 1px;
 
   /* Experimental, but fallback is default styling */
   text-wrap: balance;
@@ -132,6 +133,7 @@ h2,
 h3,
 h4 {
   font-family: var(--font-heading);
+  letter-spacing: normal;
 }
 
 h1 {
