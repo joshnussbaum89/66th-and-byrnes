@@ -10,12 +10,8 @@ import Mobile from './Mobile.astro'
 
 <style>
   nav {
-    padding: 1rem;
-  }
-
-  @media (min-width: 768px) {
-    nav {
-      padding: 2rem;
-    }
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: var(--padding-base);
   }
 </style>

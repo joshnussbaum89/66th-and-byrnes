@@ -1,4 +1,5 @@
 <div id="mobile-nav" class="mobile-nav">
+  <!-- TODO: Replace with logo -->
   <h1><a href="/">66th & Byrnes</a></h1>
   <div id="hamburger" class="hamburger">
     <div class="top"></div>
@@ -10,6 +11,7 @@
       <li><a class="site-link" href="/services" aria-label="Services">Services</a></li>
       <li><a class="site-link" href="/work" aria-label="Work">Work</a></li>
       <li><a class="site-link" href="/about" aria-label="About">About</a></li>
+      <li><a class="site-cta" href="/contact" aria-label="Contact">Contact</a></li>
     </ul>
   </div>
 </div>
@@ -25,6 +27,10 @@
     .mobile-nav {
       display: none;
     }
+  }
+
+  .mobile-nav h1 {
+    z-index: 4;
   }
 
   .hamburger {
@@ -112,15 +118,25 @@
   }
 
   .mobile-nav-overlay ul li {
+    margin-bottom: 2rem;
+    font-size: var(--size-lg);
     opacity: 0;
     transform: translateY(1rem);
     transition: all var(--transition-normal) 0.3s;
   }
+
   .mobile-nav-overlay ul li:nth-of-type(2) {
     transition: all var(--transition-normal) 0.4s;
   }
+
   .mobile-nav-overlay ul li:nth-of-type(3) {
     transition: all var(--transition-normal) 0.5s;
+  }
+  
+  .mobile-nav-overlay ul li:nth-of-type(4) {
+    position: absolute;
+    bottom: 2rem;
+    transition: all var(--transition-normal) 0.6s;
   }
 
   .hamburger.active + .mobile-nav-overlay ul li {
@@ -128,9 +144,8 @@
     transform: translateY(0);
   }
 
-  .mobile-nav-overlay li {
-    font-size: var(--size-lg);
-    margin-bottom: 2rem;
+  .mobile-nav-overlay .site-cta {
+    font-size: var(--size-base);
   }
 </style>
 

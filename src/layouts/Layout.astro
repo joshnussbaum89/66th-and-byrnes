@@ -47,6 +47,12 @@ const socialImageURL = new URL(socialImage || '/images/gradient.jpg', canonicalU
     <meta name="twitter:image" content={socialImageURL} />
 
     <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter&family=Lora:wght@700&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Favicon & Theme -->
 
@@ -58,5 +64,6 @@ const socialImageURL = new URL(socialImage || '/images/gradient.jpg', canonicalU
   <body>
     <Navigation />
     <slot />
+    <!-- TODO: Build footer -->
   </body>
 </html>

@@ -1,10 +1,11 @@
 :root {
-  /* 
-    Fonts
-    TODO: Replace these 
-  */
-  --font-heading: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu;
-  --font-body: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu;
+  /* Containers */
+  --max-width: 1440px;
+  --padding-base: 1rem;
+
+  /* Fonts */
+  --font-heading: 'Lora', serif;
+  --font-body: 'Inter', sans-serif;
 
   /* Font Sizes */
 
@@ -64,6 +65,13 @@
   --hover-opacity-link: 0.7;
 }
 
+@media (min-width: 768px) {
+  :root {
+    /* Containers */
+    --padding-base: 2rem;
+  }
+}
+
 *,
 *::before,
 *::after {
@@ -112,6 +120,13 @@ body[data-overlay-displayed='true'] {
   overflow: hidden;
 }
 
+main {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--padding-base);
+}
+
 h1,
 h2,
 h3,
@@ -120,7 +135,7 @@ h4 {
 }
 
 h1 {
-  font-size: clamp(var(--size-xl), 5vw, var(--size-xxl));
+  font-size: clamp(var(--size-lg), 5vw, var(--size-xxl));
 }
 
 h2 {
@@ -141,6 +156,7 @@ a {
 }
 
 p {
+  font-size: clamp(var(--size-sm), 4vw, var(--size-base));
   line-height: 1.5;
 }
 
@@ -149,20 +165,22 @@ ul {
 }
 
 header {
-  width: 100%;
-  height: auto;
-  padding: 4rem 1rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
+  width: 100%;
+  max-width: var(--max-width);
+  height: auto;
+  margin: 0 auto;
+  padding: 4rem var(--padding-base);
   text-align: center;
 }
 
 @media (min-width: 768px) {
   header {
-    padding: 6rem 2rem;
+    padding: 6rem var(--padding-base);
   }
 }
 
@@ -206,27 +224,21 @@ header {
   opacity: 1;
 }
 
-/* TODO: edit this */
 .site-cta {
   display: inline-block;
-  padding: 1rem 2rem;
+  padding: 0.75rem 1.8rem;
   color: var(--color-white);
   background-color: var(--color-green-200);
-  transition: transform var(--transition-normal);
+  font-size: var(--size-sm);
+  border: 2px solid var(--color-green-200);
   border-radius: 3rem;
-  font-size: var(--size-base);
+  transition: all var(--transition-normal);
   cursor: pointer;
 }
 
-@media (min-width: 768px) {
-  .site-cta:hover {
-    transform: scale(1.01);
-  }
-
-  .site-cta:active {
-    transform: scale(0.99);
-    box-shadow: none;
-  }
+.site-cta:hover {
+  color: var(--color-green-200);
+  background-color: var(--color-white);
 }
 
 .error-text {
