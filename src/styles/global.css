@@ -1,7 +1,8 @@
 :root {
   /* Containers */
   --max-width: 1440px;
-  --padding-base: 1rem;
+  --padding-base: clamp(1rem, 2vw, 2rem);
+  --section-spacing: clamp(4rem, 10vw, 6rem);
 
   /* Fonts */
   --font-heading: 'Lora', serif;
@@ -65,13 +66,6 @@
   --hover-opacity-link: 0.7;
 }
 
-@media (min-width: 768px) {
-  :root {
-    /* Containers */
-    --padding-base: 2rem;
-  }
-}
-
 *,
 *::before,
 *::after {
@@ -110,7 +104,6 @@ body {
   background: var(--color-background);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow: auto;
   letter-spacing: 1px;
 
   /* Experimental, but fallback is default styling */
@@ -176,14 +169,8 @@ header {
   max-width: var(--max-width);
   height: auto;
   margin: 0 auto;
-  padding: 4rem var(--padding-base);
+  padding: var(--section-spacing) var(--padding-base);
   text-align: center;
-}
-
-@media (min-width: 768px) {
-  header {
-    padding: 6rem var(--padding-base);
-  }
 }
 
 .site-link {
@@ -247,8 +234,6 @@ header {
   color: var(--color-error);
   font-size: var(--size-sm);
 }
-
-/* Animations */
 
 /* Pseudo elements */
 

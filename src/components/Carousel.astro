@@ -7,59 +7,60 @@ import heroFullWidthThree from '../assets/hero-full-width-three.jpg'
 import heroFullWidthFour from '../assets/hero-full-width-four.jpg'
 ---
 
-<div class="image-container active" data-image="1">
+<div class="carousel">
   <Picture
+    class="carousel-image active"
     src={heroFullWidthOne}
     formats={['avif', 'webp']}
+    data-image="1"
     alt="Person sitting on a bench in Joshua Tree National Park"
   />
-</div>
-<div class="image-container" data-image="2">
   <Picture
+    class="carousel-image"
     src={heroFullWidthTwo}
     formats={['avif', 'webp']}
+    data-image="2"
     alt="Person standing on the grass at night with the backdrop of the moon"
   />
-</div>
-<div class="image-container" data-image="3">
   <Picture
+    class="carousel-image"
     src={heroFullWidthThree}
     formats={['avif', 'webp']}
+    data-image="3"
     alt="New York City lights at night"
   />
-</div>
-<div class="image-container" data-image="4">
   <Picture
+    class="carousel-image"
     src={heroFullWidthFour}
     formats={['avif', 'webp']}
+    data-image="4"
     alt="A single banana on a pink background"
   />
 </div>
 
-<!-- TODO: Fix horizontal scrolling bug -->
 <style>
-  .image-container {
+  /* TODO: 
+    Can this be full width?
+    Full width creates a horizontal scrolling bug
+    Maybe as a background image?
+    See: https://stackoverflow.com/questions/37589386/how-to-have-a-full-width-image-in-a-div-that-has-padding
+  */
+  .carousel {
     position: relative;
-    height: 0;
-    overflow-x: hidden;
-  }
-
-  .image-container.active {
-    width: 100vw;
     height: 60vh;
-    margin-left: calc(50% - 50vw);
+    margin-bottom: var(--section-spacing);
+    overflow: hidden;
   }
 
-  .image-container img {
+  .carousel-image {
     position: absolute;
     top: 0;
-    height: 100%;
     object-fit: cover;
     opacity: 0;
     transition: opacity var(--transition-long);
   }
 
-  .image-container.active img {
+  .carousel-image.active {
     opacity: 1;
   }
 </style>
@@ -67,11 +68,11 @@ import heroFullWidthFour from '../assets/hero-full-width-four.jpg'
 <script>
   // Rotate through images
   setInterval(() => {
-    const allImages = document.querySelectorAll('.image-container')
-    const activeImage = document.querySelector('.image-container.active')
+    const allImages = document.querySelectorAll('.carousel-image')
+    const activeImage = document.querySelector('.carousel-image.active')
     const activeImageNumber = parseInt(activeImage?.getAttribute('data-image') || '1')
     const nextImageNumber = activeImageNumber === allImages.length ? 1 : activeImageNumber + 1
-    const nextImage = document.querySelector(`.image-container[data-image="${nextImageNumber}"]`)
+    const nextImage = document.querySelector(`.carousel-image[data-image="${nextImageNumber}"]`)
 
     activeImage?.classList.remove('active')
     nextImage?.classList.add('active')
