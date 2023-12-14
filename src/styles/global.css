@@ -61,9 +61,10 @@
   --transition-long: 0.6s ease-in-out;
   --transition-natural: 0.4s cubic-bezier(1, 0, 0, 1);
 
-  /* Hover */
-
-  --hover-opacity-link: 0.7;
+  /* Borders */
+  
+  --border-radius-card: 1.5rem;
+  --border-radius-button: 3rem;
 }
 
 *,
@@ -169,7 +170,9 @@ header {
   max-width: var(--max-width);
   height: auto;
   margin: 0 auto;
-  padding: var(--section-spacing) var(--padding-base);
+  /* Calculate navigation height */
+  padding: calc(clamp(83.42px, 10vw, 111.89px) + var(--section-spacing)) var(--padding-base)
+    var(--section-spacing);
   text-align: center;
 }
 
@@ -220,14 +223,14 @@ header {
   background-color: var(--color-green-200);
   font-size: var(--size-sm);
   border: 2px solid var(--color-green-200);
-  border-radius: 3rem;
+  border-radius: var(--border-radius-button);
   transition: all var(--transition-normal);
   cursor: pointer;
 }
 
 .site-cta:hover {
   color: var(--color-green-200);
-  background-color: var(--color-white);
+  background-color: transparent;
 }
 
 .error-text {
