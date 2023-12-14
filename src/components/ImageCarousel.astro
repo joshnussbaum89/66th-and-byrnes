@@ -1,0 +1,79 @@
+---
+import { Picture } from 'astro:assets'
+
+import heroFullWidthOne from '../assets/hero-full-width-one.jpg'
+import heroFullWidthTwo from '../assets/hero-full-width-two.jpg'
+import heroFullWidthThree from '../assets/hero-full-width-three.jpg'
+import heroFullWidthFour from '../assets/hero-full-width-four.jpg'
+---
+
+<div class="image-container active" data-image="1">
+  <Picture
+    src={heroFullWidthOne}
+    formats={['avif', 'webp']}
+    alt="Person sitting on a bench in Joshua Tree National Park"
+  />
+</div>
+<div class="image-container" data-image="2">
+  <Picture
+    src={heroFullWidthTwo}
+    formats={['avif', 'webp']}
+    alt="Person standing on the grass at night with the backdrop of the moon"
+  />
+</div>
+<div class="image-container" data-image="3">
+  <Picture
+    src={heroFullWidthThree}
+    formats={['avif', 'webp']}
+    alt="New York City lights at night"
+  />
+</div>
+<div class="image-container" data-image="4">
+  <Picture
+    src={heroFullWidthFour}
+    formats={['avif', 'webp']}
+    alt="A single banana on a pink background"
+  />
+</div>
+
+<!-- TODO: Fix horizontal scrolling bug -->
+<style>
+  .image-container {
+    position: relative;
+    height: 0;
+    overflow-x: hidden;
+  }
+
+  .image-container.active {
+    width: 100vw;
+    height: 60vh;
+    margin-left: calc(50% - 50vw);
+  }
+
+  .image-container img {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity var(--transition-long);
+  }
+
+  .image-container.active img {
+    opacity: 1;
+  }
+</style>
+
+<script>
+  // Rotate through images
+  setInterval(() => {
+    const allImages = document.querySelectorAll('.image-container')
+    const activeImage = document.querySelector('.image-container.active')
+    const activeImageNumber = parseInt(activeImage?.getAttribute('data-image') || '1')
+    const nextImageNumber = activeImageNumber === allImages.length ? 1 : activeImageNumber + 1
+    const nextImage = document.querySelector(`.image-container[data-image="${nextImageNumber}"]`)
+
+    activeImage?.classList.remove('active')
+    nextImage?.classList.add('active')
+  }, 4000)
+</script>
