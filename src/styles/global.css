@@ -41,6 +41,9 @@
   --color-blue: #d7e1e8;
   --color-blue: oklch(90.42% 0.014 238.03);
 
+  --color-red: #ff3a2d;
+  --color-red: oklch(65.32% 0.2449 29.08);
+
   --color-grey-100: #d9d9d9;
   --color-grey-100: oklch(88.53% 0 0);
 
@@ -62,8 +65,8 @@
   --transition-natural: 0.4s cubic-bezier(1, 0, 0, 1);
 
   /* Borders */
-  
-  --border-radius-card: 1.5rem;
+
+  --border-radius-card: clamp(1rem, 2vw, 2rem);
   --border-radius-button: 3rem;
 }
 
