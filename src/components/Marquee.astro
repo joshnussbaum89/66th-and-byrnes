@@ -30,11 +30,11 @@ import Icon from 'astro-icon'
   .marquee,
   .marquee-container {
     display: flex;
-    gap: var(--section-spacing);
+    gap: var(--section-spacing-base);
   }
 
   .marquee {
-    margin-bottom: var(--section-spacing);
+    margin-bottom: var(--section-spacing-large);
     overflow-x: hidden;
     mask-image: linear-gradient(
       to right,
@@ -68,7 +68,7 @@ import Icon from 'astro-icon'
     }
     to {
       /* This prevents "skipping" on animation reset */
-      transform: translateX(calc(-100% - var(--section-spacing)));
+      transform: translateX(calc(-100% - var(--section-spacing-base)));
     }
   }
 </style>

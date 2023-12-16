@@ -63,10 +63,7 @@ import Icon from 'astro-icon'
     </div>
     <div class="footer-section newsletter">
       <h3>Join Our Newsletter</h3>
-      <p>
-        Stay up to date with the latest news and updates from 66th &amp; Byrnes. We promise not to
-        spam you.
-      </p>
+      <p>Stay up to date with the latest news and updates from 66th &amp; Byrnes.</p>
       <form action="/api/subscribe" method="post" class="newsletter-form">
         <div class="form-group">
           <div>
@@ -108,7 +105,7 @@ import Icon from 'astro-icon'
   .wrapper {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--section-spacing);
+    gap: var(--section-spacing-base);
     max-width: var(--max-width);
     margin: 0 auto 2rem;
     padding: var(--padding-base);
@@ -116,23 +113,25 @@ import Icon from 'astro-icon'
 
   .footer-section.bio,
   .footer-section.newsletter {
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
   }
 
   .footer-section.sitemap,
   .footer-section.contact {
-    width: calc(50% - var(--section-spacing));
+    width: calc(50% - var(--section-spacing-base));
   }
 
   @media (min-width: 1024px) {
     .footer-section.bio,
-    .footer-section.newsletter,
     .footer-section.sitemap,
-    .footer-section.contact {
+    .footer-section.contact,
+    .footer-section.newsletter {
       display: block;
       text-align: left;
     }
@@ -145,6 +144,7 @@ import Icon from 'astro-icon'
     }
 
     .footer-section.newsletter {
+      max-width: none;
       flex: 2;
     }
   }
@@ -217,6 +217,8 @@ import Icon from 'astro-icon'
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: var(--max-width);
+    margin: 0 auto 2rem;
   }
 
   .footer-text p {

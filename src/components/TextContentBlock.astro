@@ -1,0 +1,46 @@
+---
+export interface Props {
+  title: string
+  subtitle: string
+  bodyText?: string
+  ctaText?: string
+  ctaLink?: string
+}
+
+const { title, subtitle, bodyText, ctaText, ctaLink } = Astro.props
+---
+
+<section class="container site-section">
+  <h2>{title}</h2>
+  <p>{subtitle}</p>
+  <p>{bodyText}</p>
+  <a class="site-cta" href={ctaLink}>{ctaText}</a>
+</section>
+
+<style>
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    max-width: 600px;
+    margin: 0 auto var(--section-spacing-large);
+    text-align: center;
+  }
+
+  .container h2 {
+    font-family: var(--font-body);
+    font-size: clamp(var(--size-xs), 2vw, var(--size-sm));
+    letter-spacing: 0.25rem;
+    text-transform: uppercase;
+  }
+
+  .container p:first-of-type {
+    font-family: var(--font-heading);
+    font-size: clamp(var(--size-lg), 5vw, var(--size-xl));
+  }
+
+  .container .site-cta {
+    margin-top: 1rem;
+  }
+</style>
