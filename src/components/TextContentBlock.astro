@@ -5,20 +5,21 @@ export interface Props {
   bodyText?: string
   ctaText?: string
   ctaLink?: string
+  class?: string
 }
 
-const { title, subtitle, bodyText, ctaText, ctaLink } = Astro.props
+const { title, subtitle, bodyText, ctaText, ctaLink, class: className } = Astro.props
 ---
 
-<section class="container site-section">
+<div class:list={['text-content-container', className]}>
   <h2>{title}</h2>
   <p>{subtitle}</p>
   <p>{bodyText}</p>
   <a class="site-cta" href={ctaLink}>{ctaText}</a>
-</section>
+</div>
 
 <style>
-  .container {
+  .text-content-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -28,19 +29,19 @@ const { title, subtitle, bodyText, ctaText, ctaLink } = Astro.props
     text-align: center;
   }
 
-  .container h2 {
+  .text-content-container h2 {
     font-family: var(--font-body);
     font-size: clamp(var(--size-xs), 2vw, var(--size-sm));
     letter-spacing: 0.25rem;
     text-transform: uppercase;
   }
 
-  .container p:first-of-type {
+  .text-content-container p:first-of-type {
     font-family: var(--font-heading);
     font-size: clamp(var(--size-lg), 5vw, var(--size-xl));
   }
 
-  .container .site-cta {
+  .text-content-container .site-cta {
     margin-top: 1rem;
   }
 </style>
