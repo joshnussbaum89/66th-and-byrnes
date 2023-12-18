@@ -23,7 +23,7 @@ const { title, bodyText, icon, ctaText, ctaLink, backgroundColor } = Astro.props
 
   {
     ctaText && ctaLink && (
-      <a class="site-link" href={ctaLink}>
+      <a class="site-link bold" href={ctaLink}>
         {ctaText}
       </a>
     )
@@ -53,12 +53,5 @@ const { title, bodyText, icon, ctaText, ctaLink, backgroundColor } = Astro.props
 
   .info-card p {
     font-size: var(--size-xs);
-  }
-
-  .info-card a {
-    font-size: var(--size-xs);
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: var(--letter-spacing-large);
   }
 </style>

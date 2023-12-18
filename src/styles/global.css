@@ -206,6 +206,13 @@ header {
   transform: scaleX(1);
 }
 
+.site-link.bold {
+  font-size: var(--size-xs);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-large);
+}
+
 .site-section {
   width: 100%;
   height: auto;
