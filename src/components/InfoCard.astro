@@ -1,0 +1,64 @@
+---
+import Icon from 'astro-icon'
+
+export interface Props {
+  title: string
+  bodyText: string
+  icon: string
+  ctaText?: string
+  ctaLink?: string
+  backgroundColor?: string | null
+}
+
+const { title, bodyText, icon, ctaText, ctaLink, backgroundColor } = Astro.props
+---
+
+<article
+  class="info-card"
+  style={`background-color: ${backgroundColor || 'var(--color-green-100)'};`}
+>
+  <Icon name={icon} />
+  <h3>{title}</h3>
+  <p>{bodyText}</p>
+
+  {
+    ctaText && ctaLink && (
+      <a class="site-link" href={ctaLink}>
+        {ctaText}
+      </a>
+    )
+  }
+</article>
+
+<style>
+  .info-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem;
+    border-radius: var(--border-radius-card);
+    text-align: center;
+  }
+
+  .info-card svg {
+    width: 2rem;
+    fill: var(--color-green-200);
+  }
+
+  .info-card h3 {
+    font-size: var(--size-base);
+  }
+
+  .info-card p {
+    font-size: var(--size-xs);
+  }
+
+  .info-card a {
+    font-size: var(--size-xs);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-large);
+  }
+</style>

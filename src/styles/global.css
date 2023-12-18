@@ -19,6 +19,10 @@
   --size-xl: 3.052rem;
   --size-xxl: 3.815rem;
 
+  /* Letter Spacing */
+  --letter-spacing-base: 1px;
+  --letter-spacing-large: 0.2rem;
+
   /* Colors */
 
   --color-white: #f5f3f0;
@@ -109,7 +113,7 @@ body {
   background: var(--color-background);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  letter-spacing: 1px;
+  letter-spacing: var(--letter-spacing-base);
 
   /* Experimental, but fallback is default styling */
   text-wrap: balance;

@@ -1,0 +1,99 @@
+---
+import TextContent from '../../TextContent.astro'
+import InfoCard from '../../InfoCard.astro'
+
+// TODO: Add icons
+const services = [
+  {
+    title: 'Influencer Strategy',
+    bodyText:
+      'Our team will work with you to develop a strategy that will help you reach your goals.',
+    backgroundColor: 'var(--color-green-100)',
+  },
+  {
+    title: 'Event Activation',
+    bodyText:
+      'Events are tough, but we are tougher. We will work with you to create an event activation plan that will help you reach your goals.',
+    backgroundColor: 'var(--color-yellow)',
+  },
+  {
+    title: 'Marketing Strategy',
+    bodyText:
+      'Our marketing team is unmatched in their ability to create a strategy that will help you reach your goals.',
+    backgroundColor: 'var(--color-peach)',
+  },
+  {
+    title: 'On-Site Management',
+    bodyText:
+      "Don't sweat the small stuff. We will work with you to create an on-site management plan that will help you reach your goals.",
+    backgroundColor: 'var(--color-blue)',
+  },
+  {
+    title: 'Talent Booking',
+    bodyText:
+      'Need Talent? We got you. We will work with you to create a talent booking plan that will help you reach your goals.',
+    backgroundColor: 'var(--color-green-100)',
+  },
+]
+---
+
+<section id="services" class="services site-section">
+  <TextContent
+    title="Our Services"
+    subtitle="Crafting Influence, Curating Events"
+    bodyText="Our services range from influencer marketing to event curation. We are a full service agency ready to assist you with any of your marketing needs."
+    ctaLink="/services"
+    ctaText="Learn More"
+    class="text-content-custom"
+  />
+
+  <div class="service-cards">
+    {
+      services.map((service) => (
+        <InfoCard
+          title={service.title}
+          bodyText={service.bodyText}
+          icon="arrow-top-right"
+          ctaText="Learn More"
+          ctaLink="/services"
+          backgroundColor={service.backgroundColor}
+        />
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .services {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--section-spacing-base);
+    margin-bottom: var(--section-spacing-large);
+  }
+
+  @media (min-width: 768px) {
+    .services {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .text-content-custom {
+    margin-bottom: 0;
+  }
+
+  @media (min-width: 768px) {
+    .text-content-custom {
+      position: sticky;
+      top: clamp(6rem, 10vw, 8rem);
+      height: fit-content;
+      align-items: flex-start;
+      text-align: left;
+    }
+  }
+
+  .service-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--padding-base);
+  }
+</style>

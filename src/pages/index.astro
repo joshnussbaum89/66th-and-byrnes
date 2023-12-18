@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro'
 import Carousel from '../components/Carousel.astro'
 import Marquee from '../components/Marquee.astro'
 import Vision from '../components/pages/home/Vision.astro'
+import Services from '../components/pages/home/Services.astro'
 import Contact from '../components/pages/home/Contact.astro'
 ---
 
@@ -14,18 +15,8 @@ import Contact from '../components/pages/home/Contact.astro'
   <main>
     <Carousel />
     <Marquee />
-    <!-- 
-      TODO: Use <Vision />, <Services /> etc. but break down further into reusable components as much as possible 
-      For example, <Vision /> could use a <ImageAndTextBlock /> component
-    -->
-
     <Vision />
-    <!-- 
-      TODO: <Services /> 
-      Services is a <TextContent /> component with a card grid of <ServiceCard /> components
-    -->
-
-
+    <Services />
     <!-- TODO: <FeaturedWork /> -->
     <!-- TODO: <AboutUs /> -->
     <Contact />

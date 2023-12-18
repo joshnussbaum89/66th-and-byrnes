@@ -11,7 +11,7 @@ export interface Props {
 const { title, subtitle, bodyText, ctaText, ctaLink, class: className } = Astro.props
 ---
 
-<div class:list={['text-content', className]}>
+<article class:list={['text-content', className]}>
   <h2>{title}</h2>
   <p>{subtitle}</p>
   <p>{bodyText}</p>
@@ -22,7 +22,7 @@ const { title, subtitle, bodyText, ctaText, ctaLink, class: className } = Astro.
       </a>
     )
   }
-</div>
+</article>
 
 <style>
   .text-content {
@@ -30,7 +30,7 @@ const { title, subtitle, bodyText, ctaText, ctaLink, class: className } = Astro.
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-    max-width: 600px;
+    max-width: 650px;
     margin: 0 auto var(--section-spacing-large);
     text-align: center;
   }
@@ -38,7 +38,7 @@ const { title, subtitle, bodyText, ctaText, ctaLink, class: className } = Astro.
   .text-content h2 {
     font-family: var(--font-body);
     font-size: clamp(var(--size-xs), 2vw, var(--size-sm));
-    letter-spacing: 0.25rem;
+    letter-spacing: var(--letter-spacing-large);
     text-transform: uppercase;
   }
 
