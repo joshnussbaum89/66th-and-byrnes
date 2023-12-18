@@ -1,0 +1,72 @@
+---
+import { Picture } from 'astro:assets'
+import TextContent from './TextContent.astro'
+
+export interface Props {
+  title: string
+  subtitle: string
+  bodyText?: string
+  ctaText?: string
+  ctaLink?: string
+  image: ImageMetadata
+  imageAlt: string
+  class?: string
+}
+
+const {
+  title,
+  subtitle,
+  bodyText,
+  ctaText,
+  ctaLink,
+  image,
+  imageAlt,
+  class: className,
+} = Astro.props
+---
+
+<div class:list={['image-and-text-content', className]}>
+  <TextContent
+    title={title}
+    subtitle={subtitle}
+    bodyText={bodyText}
+    ctaLink={ctaLink}
+    ctaText={ctaText}
+    class="text-content-custom"
+  />
+  <Picture src={image} alt={imageAlt} />
+</div>
+
+<style>
+  .image-and-text-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    gap: var(--section-spacing-base);
+    margin-bottom: var(--section-spacing-large);
+  }
+
+  @media (min-width: 768px) {
+    .image-and-text-content {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .image-and-text-content img {
+    height: 60vh;
+    border-radius: var(--border-radius-card);
+    object-fit: cover;
+  }
+
+  .text-content-custom {
+    margin-bottom: 0;
+  }
+
+  @media (min-width: 768px) {
+    .text-content-custom {
+      order: 1;
+      align-items: flex-start;
+      text-align: left;
+    }
+  }
+</style>

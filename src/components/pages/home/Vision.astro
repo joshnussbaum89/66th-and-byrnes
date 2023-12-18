@@ -1,50 +1,16 @@
 ---
-import { Picture } from 'astro:assets'
-import TextContentBlock from '../../TextContentBlock.astro'
+import ImageAndTextContent from '../../ImageAndTextContent.astro'
 import visionImage from '../../../assets/vision.jpg'
 ---
 
-<section id="vision" class="vision-container site-section">
-  <Picture src={visionImage} alt="A persons hand holding a lightbulb" />
-  <TextContentBlock
+<section id="vision" class="site-section">
+  <ImageAndTextContent
     title="Our Vision"
     subtitle="Where Creativity, Influence, and Events Converge"
     bodyText="We are a creative agency that specializes in event production and management. We are a team of creative professionals who are passionate about creating unique experiences that inspire and engage audiences."
     ctaLink="/contact"
-    ctaText="Let's Talk"
-    class="vision-container-text"
+    ctaText="Let's Chat"
+    image={visionImage}
+    imageAlt="A person holding a lightbulb"
   />
 </section>
-
-<style>
-  .vision-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    align-items: center;
-    gap: var(--section-spacing-base);
-    margin-bottom: var(--section-spacing-large);
-  }
-
-  @media (min-width: 768px) {
-    .vision-container {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  .vision-container img {
-    height: 60vh;
-    border-radius: var(--border-radius-card);
-    object-fit: cover;
-  }
-
-  .vision-container-text {
-    margin-bottom: 0;
-  }
-
-  @media (min-width: 768px) {
-    .vision-container-text {
-      text-align: left;
-      align-items: flex-start;
-    }
-  }
-</style>

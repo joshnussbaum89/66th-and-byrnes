@@ -14,8 +14,18 @@ import Contact from '../components/pages/home/Contact.astro'
   <main>
     <Carousel />
     <Marquee />
+    <!-- 
+      TODO: Use <Vision />, <Services /> etc. but break down further into reusable components as much as possible 
+      For example, <Vision /> could use a <ImageAndTextBlock /> component
+    -->
+
     <Vision />
-    <!-- TODO: <Services /> -->
+    <!-- 
+      TODO: <Services /> 
+      Services is a <TextContent /> component with a card grid of <ServiceCard /> components
+    -->
+
+
     <!-- TODO: <FeaturedWork /> -->
     <!-- TODO: <AboutUs /> -->
     <Contact />
