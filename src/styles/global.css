@@ -184,6 +184,10 @@ header {
   text-align: center;
 }
 
+section {
+  margin: var(--section-spacing-base) auto var(--section-spacing-large);
+}
+
 .site-link {
   position: relative;
 }
@@ -251,6 +255,11 @@ header {
 .error-text {
   color: var(--color-error);
   font-size: var(--size-sm);
+}
+
+.center {
+  text-align: center;
+  margin: 0 auto;
 }
 
 /* Pseudo elements */
