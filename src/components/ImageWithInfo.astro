@@ -1,0 +1,96 @@
+---
+import { Picture } from 'astro:assets'
+
+export interface Props {
+  image: ImageMetadata
+  imageAlt: string
+  text: string
+  ctaLink?: string
+  ctaText?: string
+  slideColor?: string | null
+  class?: string
+}
+
+const { image, imageAlt, text, ctaLink, ctaText, slideColor, class: className } = Astro.props
+---
+
+<div class:list={['image', className]}>
+  <Picture src={image} formats={['avif', 'webp']} alt={imageAlt} />
+  <div class="image-info" style={`background-color: ${slideColor || 'var(--color-green-100)'};`}>
+    <p>{text}</p>
+    {
+      ctaText && ctaLink && (
+        <a class="site-link bold" href={ctaLink}>
+          {ctaText}
+        </a>
+      )
+    }
+  </div>
+</div>
+
+<style>
+  .image {
+    position: relative;
+    height: 425px;
+    overflow: hidden;
+  }
+
+  .image img {
+    transition: transform var(--transition-normal);
+  }
+
+  .image:hover img {
+    transform: scale(1.05);
+    /* 
+      filter: blur(2px);
+      Not a smooth transition, transition is temporarily removed
+      This causes a flash of whitespace inbetween images 
+    */
+  }
+
+  .image .image-info {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: fit-content;
+    transform: translateY(100%);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 2rem;
+    opacity: 0;
+    border-radius: var(--border-radius-card) var(--border-radius-card) 0 0;
+    transition:
+      opacity var(--transition-normal),
+      transform var(--transition-normal);
+  }
+
+  .image:hover .image-info {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .image:nth-of-type(1) .image-info {
+    background-color: var(--color-peach);
+  }
+
+  .image:nth-of-type(2) .image-info {
+    background-color: var(--color-blue);
+  }
+
+  .image:nth-of-type(3) .image-info {
+    background-color: var(--color-yellow);
+  }
+
+  .image:nth-of-type(4) .image-info {
+    background-color: var(--color-green-100);
+  }
+
+  .image-info p {
+    font-size: var(--size-xs);
+    text-align: left;
+  }
+</style>

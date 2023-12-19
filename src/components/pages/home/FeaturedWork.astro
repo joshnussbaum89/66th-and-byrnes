@@ -1,10 +1,37 @@
 ---
-import { Picture } from 'astro:assets'
 import TextContent from '../../TextContent.astro'
+import ImageWithInfo from '../../ImageWithInfo.astro'
 import fanHeart from '../../../assets/fan-heart.jpg'
 import footballSidelines from '../../../assets/football-sidelines.jpg'
 import lollipop from '../../../assets/lollipop.jpg'
 import party from '../../../assets/party.jpg'
+
+const projects = [
+  {
+    image: fanHeart,
+    imageAlt: 'Fan Heart',
+    text: 'Implementing a unique social media strategy, we helped Lorem grow their following to over 1 million users.',
+    backgroundColor: 'var(--color-green-100)',
+  },
+  {
+    image: footballSidelines,
+    imageAlt: 'Football Sidelines',
+    text: "We helped Lorem create a new visual identity that reflects their brand's values and mission.",
+    backgroundColor: 'var(--color-yellow)',
+  },
+  {
+    image: lollipop,
+    imageAlt: 'Lollipop',
+    text: "66th and Byrnes transformed Lorem's event into a fully virtual experience, resulting in a 300% increase in attendance.",
+    backgroundColor: 'var(--color-peach)',
+  },
+  {
+    image: party,
+    imageAlt: 'Party',
+    text: 'How we helped Ipsum reach a new audience of over 1 million users through a series of paid and organic social media campaigns.',
+    backgroundColor: 'var(--color-blue)',
+  },
+]
 ---
 
 <section id="featured-work" class="featured-work site-section">
@@ -15,46 +42,20 @@ import party from '../../../assets/party.jpg'
     class="text-content-custom"
   />
   <div class="gallery">
-    <div class="gallery-image">
-      <div class="gallery-image-info">
-        <p>
-          Implementing a unique social media strategy, we helped Lorem grow their following to over
-          1 million users.
-        </p>
-        <a href="/work" class="site-link bold">Read more</a>
-      </div>
-      <Picture src={fanHeart} formats={['avif', 'webp']} alt="Fan Heart" />
-    </div>
-    <div class="gallery-image">
-      <div class="gallery-image-info">
-        <p>
-          We helped Lorem create a new visual identity that reflects their brand's values and
-          mission.
-        </p>
-        <a href="/work" class="site-link bold">Read more</a>
-      </div>
-      <Picture src={footballSidelines} formats={['avif', 'webp']} alt="Football Sidelines" />
-    </div>
-    <div class="gallery-image">
-      <div class="gallery-image-info">
-        <p>
-          66th and Byrnes transformed Lorem's event into a fully virtual experience, resulting in a
-          300% increase in attendance.
-        </p>
-        <a href="/work" class="site-link bold">Read more</a>
-      </div>
-      <Picture src={lollipop} formats={['avif', 'webp']} alt="Lollipop" />
-    </div>
-    <div class="gallery-image">
-      <div class="gallery-image-info">
-        <p>
-          How we helped Ipsum reach a new audience of over 1 million users through a series of paid
-          and organic social media campaigns.
-        </p>
-        <a href="/work" class="site-link bold">Read more</a>
-      </div>
-      <Picture src={party} formats={['avif', 'webp']} alt="Party" />
-    </div>
+    {
+      projects.map((project) => {
+        return (
+          <ImageWithInfo
+            image={project.image}
+            imageAlt={project.imageAlt}
+            text={project.text}
+            ctaLink="/work"
+            ctaText="Read more"
+            slideColor={project.backgroundColor}
+          />
+        )
+      })
+    }
   </div>
   <a href="/work" class="site-cta">All Projects</a>
 </section>
@@ -75,68 +76,5 @@ import party from '../../../assets/party.jpg'
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     margin-bottom: 2rem;
-  }
-
-  .gallery-image {
-    position: relative;
-    height: 425px;
-    overflow: hidden;
-  }
-
-  .gallery-image-info {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: fit-content;
-    transform: translateY(100%);
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-    padding: 2rem;
-    opacity: 0;
-    border-radius: var(--border-radius-card) var(--border-radius-card) 0 0;
-    transition:
-      opacity var(--transition-normal),
-      transform var(--transition-normal);
-  }
-
-  .gallery-image:hover .gallery-image-info {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .gallery-image:nth-of-type(1) .gallery-image-info {
-    background-color: var(--color-peach);
-  }
-
-  .gallery-image:nth-of-type(2) .gallery-image-info {
-    background-color: var(--color-blue);
-  }
-
-  .gallery-image:nth-of-type(3) .gallery-image-info {
-    background-color: var(--color-yellow);
-  }
-
-  .gallery-image:nth-of-type(4) .gallery-image-info {
-    background-color: var(--color-green-100);
-  }
-
-  .gallery-image-info p {
-    font-size: var(--size-xs);
-    text-align: left;
-  }
-
-  .gallery-image img {
-    transition:
-      transform var(--transition-normal),
-      filter var(--transition-normal);
-  }
-
-  .gallery-image:hover img {
-    transform: scale(1.1);
-    filter: blur(2px);
   }
 </style>

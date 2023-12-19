@@ -3,12 +3,12 @@ export interface Props {
   title: string
   subtitle: string
   bodyText?: string
-  ctaText?: string
   ctaLink?: string
+  ctaText?: string
   class?: string
 }
 
-const { title, subtitle, bodyText, ctaText, ctaLink, class: className } = Astro.props
+const { title, subtitle, bodyText, ctaLink, ctaText, class: className } = Astro.props
 ---
 
 <article class:list={['text-content', className]}>

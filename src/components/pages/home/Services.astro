@@ -49,16 +49,18 @@ const services = [
 
   <div class="service-cards">
     {
-      services.map((service) => (
-        <InfoCard
-          title={service.title}
-          bodyText={service.bodyText}
-          icon="arrow-top-right"
-          ctaText="Learn More"
-          ctaLink="/services"
-          backgroundColor={service.backgroundColor}
-        />
-      ))
+      services.map((service) => {
+        return (
+          <InfoCard
+            title={service.title}
+            bodyText={service.bodyText}
+            icon="arrow-top-right"
+            ctaText="Learn More"
+            ctaLink="/services"
+            backgroundColor={service.backgroundColor}
+          />
+        )
+      })
     }
   </div>
 </section>
