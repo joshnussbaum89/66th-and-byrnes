@@ -41,13 +41,19 @@ const { image, imageAlt, title, text, ctaLink, ctaText, slideColor, class: class
     transition: transform var(--transition-normal);
   }
 
-  .image:hover img {
+  @media (min-width: 768px) {
+    .image:hover img {
+      transform: scale(1.05);
+      /* 
+        filter: blur(2px);
+        Not a smooth transition, transition is temporarily removed
+        This causes a flash of whitespace inbetween images 
+      */
+    }
+  }
+
+  .image.active img {
     transform: scale(1.05);
-    /* 
-      filter: blur(2px);
-      Not a smooth transition, transition is temporarily removed
-      This causes a flash of whitespace inbetween images 
-    */
   }
 
   .image .image-info {
@@ -71,28 +77,59 @@ const { image, imageAlt, title, text, ctaLink, ctaText, slideColor, class: class
       transform var(--transition-normal);
   }
 
-  .image:hover .image-info {
+  @media (min-width: 768px) {
+    .image:hover .image-info {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .image.active .image-info {
     opacity: 1;
     transform: translateY(0);
-  }
-
-  .image:nth-of-type(1) .image-info {
-    background-color: var(--color-peach);
-  }
-
-  .image:nth-of-type(2) .image-info {
-    background-color: var(--color-blue);
-  }
-
-  .image:nth-of-type(3) .image-info {
-    background-color: var(--color-yellow);
-  }
-
-  .image:nth-of-type(4) .image-info {
-    background-color: var(--color-green-100);
   }
 
   .image-info p {
     font-size: var(--size-xs);
   }
 </style>
+
+<script>
+  const images = document.querySelectorAll('.image')
+
+  function handleActiveImagesOnScroll() {
+    if (!window.IntersectionObserver) {
+      return console.log('IntersectionObserver not supported')
+    }
+
+    const options = {
+      root: null,
+      rootMargin: '-25%',
+      threshold: 0.1,
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      if (window.innerWidth < 768) {
+        entries.forEach((entry) => {
+          const image = entry.target
+
+          if (entry.isIntersecting) {
+            image.classList.add('active')
+          } else {
+            image.classList.remove('active')
+          }
+        })
+      }
+    }, options)
+
+    images.forEach((image) => observer.observe(image))
+  }
+
+  // Reset active sections on resize
+  window.addEventListener('resize', () => {
+    images.forEach((image) => image.classList.remove('active'))
+  })
+
+  // Set active sections on scroll
+  document.addEventListener('scroll', handleActiveImagesOnScroll)
+</script>
