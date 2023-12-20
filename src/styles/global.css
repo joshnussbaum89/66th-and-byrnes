@@ -1,5 +1,6 @@
 :root {
   /* Containers */
+  --max-width-small: 1150px;
   --max-width: 1440px;
   --padding-base: clamp(1rem, 2vw, 2rem);
   --section-spacing-base: clamp(4rem, 10vw, 6rem);
@@ -175,7 +176,7 @@ header {
   align-items: center;
   gap: 1rem;
   width: 100%;
-  max-width: var(--max-width);
+  max-width: var(--max-width-small);
   height: auto;
   margin: 0 auto;
   /* Calculate navigation height */

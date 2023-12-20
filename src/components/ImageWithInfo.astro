@@ -4,6 +4,7 @@ import { Picture } from 'astro:assets'
 export interface Props {
   image: ImageMetadata
   imageAlt: string
+  title?: string
   text: string
   ctaLink?: string
   ctaText?: string
@@ -11,12 +12,13 @@ export interface Props {
   class?: string
 }
 
-const { image, imageAlt, text, ctaLink, ctaText, slideColor, class: className } = Astro.props
+const { image, imageAlt, title, text, ctaLink, ctaText, slideColor, class: className } = Astro.props
 ---
 
 <div class:list={['image', className]}>
   <Picture src={image} formats={['avif', 'webp']} alt={imageAlt} />
   <div class="image-info" style={`background-color: ${slideColor || 'var(--color-green-100)'};`}>
+    {title && <h3>{title}</h3>}
     <p>{text}</p>
     {
       ctaText && ctaLink && (
@@ -53,6 +55,7 @@ const { image, imageAlt, text, ctaLink, ctaText, slideColor, class: className } 
     position: absolute;
     bottom: 0;
     left: 0;
+    width: 100%;
     height: fit-content;
     transform: translateY(100%);
     z-index: 1;
@@ -91,6 +94,5 @@ const { image, imageAlt, text, ctaLink, ctaText, slideColor, class: className } 
 
   .image-info p {
     font-size: var(--size-xs);
-    text-align: left;
   }
 </style>

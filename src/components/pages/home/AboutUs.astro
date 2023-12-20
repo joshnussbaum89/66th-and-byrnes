@@ -1,7 +1,53 @@
 ---
 import TextContent from '../../TextContent.astro'
+import ImageWithInfo from '../../ImageWithInfo.astro'
+import samImage from '../../../assets/sam.jpg'
+import jesseImage from '../../../assets/jesse.jpg'
 ---
 
 <section id="about" class="about site-section">
-  <TextContent title="Our Team" subtitle="The Minds Behind the Magic" class="center" />
+  <TextContent
+    title="Our Team"
+    subtitle="The Minds Behind the Magic"
+    class="text-content-custom center"
+  />
+  <div class="gallery">
+    <ImageWithInfo
+      image={samImage}
+      imageAlt="Samantha Kordelski headshot"
+      title="Samantha Kordelski"
+      text="Co-Founder & Marketing Director"
+      ctaLink="/about"
+      ctaText="Read more"
+      class="image-with-info-custom"
+      slideColor="var(--color-peach)"
+    />
+    <ImageWithInfo
+      image={jesseImage}
+      imageAlt="Jessica May headshot"
+      title="Jessica May"
+      text="Co-Founder & Event Management"
+      ctaLink="/about"
+      ctaText="Read more"
+      class="image-with-info-custom"
+      slideColor="var(--color-blue)"
+    />
+  </div>
 </section>
+
+<style>
+  .text-content-custom {
+    margin: 0 auto var(--padding-base);
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .gallery .image-with-info-custom {
+    border-radius: var(--border-radius-card);
+  }
+</style>
