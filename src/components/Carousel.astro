@@ -71,17 +71,15 @@ import heroFullWidthFour from '../assets/hero-full-width-four.jpg'
 </style>
 
 <script>
-  document.addEventListener('astro:page-load', () => {
-    // Rotate through images
-    setInterval(() => {
-      const allImages = document.querySelectorAll('.carousel-image')
-      const activeImage = document.querySelector('.carousel-image.active')
-      const activeImageNumber = parseInt(activeImage?.getAttribute('data-image') || '1')
-      const nextImageNumber = activeImageNumber === allImages.length ? 1 : activeImageNumber + 1
-      const nextImage = document.querySelector(`.carousel-image[data-image="${nextImageNumber}"]`)
+  // Rotate through images
+  setInterval(() => {
+    const allImages = document.querySelectorAll('.carousel-image')
+    const activeImage = document.querySelector('.carousel-image.active')
+    const activeImageNumber = parseInt(activeImage?.getAttribute('data-image') || '1')
+    const nextImageNumber = activeImageNumber === allImages.length ? 1 : activeImageNumber + 1
+    const nextImage = document.querySelector(`.carousel-image[data-image="${nextImageNumber}"]`)
 
-      activeImage?.classList.remove('active')
-      nextImage?.classList.add('active')
-    }, 4000)
-  })
+    activeImage?.classList.remove('active')
+    nextImage?.classList.add('active')
+  }, 4000)
 </script>
