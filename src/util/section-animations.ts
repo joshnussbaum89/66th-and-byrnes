@@ -6,7 +6,7 @@ function handleActiveSiteSectionsOnScroll() {
 
   const options = {
     root: null,
-    rootMargin: '-25%',
+    rootMargin: '0px',
     threshold: 0.1,
   }
 
