@@ -95,41 +95,43 @@ const { image, imageAlt, title, text, ctaLink, ctaText, slideColor, class: class
 </style>
 
 <script>
-  const images = document.querySelectorAll('.image')
+  document.addEventListener('astro:page-load', () => {
+    const images = document.querySelectorAll('.image')
 
-  function handleActiveImagesOnScroll() {
-    if (!window.IntersectionObserver) {
-      return console.log('IntersectionObserver not supported')
-    }
-
-    const options = {
-      root: null,
-      rootMargin: '-25%',
-      threshold: 0.1,
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-      if (window.innerWidth < 768) {
-        entries.forEach((entry) => {
-          const image = entry.target
-
-          if (entry.isIntersecting) {
-            image.classList.add('active')
-          } else {
-            image.classList.remove('active')
-          }
-        })
+    function handleActiveImagesOnScroll() {
+      if (!window.IntersectionObserver) {
+        return console.log('IntersectionObserver not supported')
       }
-    }, options)
 
-    images.forEach((image) => observer.observe(image))
-  }
+      const options = {
+        root: null,
+        rootMargin: '-25%',
+        threshold: 0.1,
+      }
 
-  // Reset active sections on resize
-  window.addEventListener('resize', () => {
-    images.forEach((image) => image.classList.remove('active'))
+      const observer = new IntersectionObserver((entries) => {
+        if (window.innerWidth < 768) {
+          entries.forEach((entry) => {
+            const image = entry.target
+
+            if (entry.isIntersecting) {
+              image.classList.add('active')
+            } else {
+              image.classList.remove('active')
+            }
+          })
+        }
+      }, options)
+
+      images.forEach((image) => observer.observe(image))
+    }
+
+    // Reset active sections on resize
+    window.addEventListener('resize', () => {
+      images.forEach((image) => image.classList.remove('active'))
+    })
+
+    // Set active sections on scroll
+    document.addEventListener('scroll', handleActiveImagesOnScroll)
   })
-
-  // Set active sections on scroll
-  document.addEventListener('scroll', handleActiveImagesOnScroll)
 </script>
