@@ -31,9 +31,8 @@ import Icon from 'astro-icon'
     <div class="footer-section contact">
       <h3>Contact</h3>
       <ul>
-        <li>1234 W 49th Street New York, New York 12345</li>
-        <li>555-555-555</li>
-        <li>Mon-Fri 9am-6pm</li>
+        <li>jessemay66@gmail.com</li>
+        <li>samkordelski@gmail.com</li>
         <li>
           <ul class="icons">
             <li>
@@ -60,21 +59,6 @@ import Icon from 'astro-icon'
         </li>
       </ul>
     </div>
-    <div class="footer-section newsletter">
-      <h3>Join Our Newsletter</h3>
-      <p>Stay up to date with the latest news and updates from 66th &amp; Byrnes.</p>
-      <form action="/api/subscribe" method="post" class="newsletter-form">
-        <div class="form-group">
-          <div>
-            <input id="email" type="email" name="email" placeholder=" " required />
-            <label for="email">Email Address</label>
-          </div>
-          <button class="site-cta" type="submit" name="subscribe" aria-label="Subscribe"
-            >Subscribe</button
-          >
-        </div>
-      </form>
-    </div>
   </div>
   <div class="footer-text">
     <p>&copy; {new Date().getFullYear()} 66th &amp; Byrnes. All rights reserved.</p>
@@ -98,54 +82,16 @@ import Icon from 'astro-icon'
   .footer p,
   .footer li {
     margin-bottom: 0.5rem;
-    font-size: clamp(var(--size-xxs), 2vw, var(--size-xs));
+    font-size: var(--size-xs);
   }
 
   .wrapper {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
     gap: var(--section-spacing-base);
     max-width: var(--max-width);
     margin: 0 auto 2rem;
     padding: var(--padding-base);
-  }
-
-  .footer-section.bio,
-  .footer-section.newsletter {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
-  .footer-section.sitemap,
-  .footer-section.contact {
-    width: calc(50% - var(--section-spacing-base));
-  }
-
-  @media (min-width: 1024px) {
-    .footer-section.bio,
-    .footer-section.sitemap,
-    .footer-section.contact,
-    .footer-section.newsletter {
-      display: block;
-      text-align: left;
-    }
-
-    .footer-section.bio,
-    .footer-section.sitemap,
-    .footer-section.contact {
-      min-width: 225px;
-      flex: 1;
-    }
-
-    .footer-section.newsletter {
-      max-width: none;
-      flex: 2;
-    }
   }
 
   .contact .icons {
@@ -162,54 +108,6 @@ import Icon from 'astro-icon'
 
   .newsletter p {
     margin-bottom: 2rem;
-  }
-
-  .form-group {
-    position: relative;
-    display: flex;
-    align-items: flex-end;
-    gap: 1rem;
-  }
-
-  .form-group input {
-    padding: 0.5rem 0.4rem 1rem;
-    color: var(--color-green-200);
-    background-color: var(--color-white);
-    border-bottom: 2px solid var(--color-green-200);
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-radius: 0;
-    outline: none;
-    transition: all var(--transition-normal);
-  }
-
-  .form-group label {
-    position: absolute;
-    top: 48%;
-    left: 0.4rem;
-    transform: translateY(-50%);
-    color: var(--color-grey-200);
-    transition: all var(--transition-normal);
-  }
-
-  .form-group input:focus + label,
-  .form-group input:not(:placeholder-shown) + label {
-    top: -0.5rem;
-    left: 0;
-  }
-
-  .form-group input:focus + label {
-    color: var(--color-green-200);
-    font-size: var(--size-xs);
-  }
-
-  .form-group input:valid + label {
-    color: var(--color-green-200);
-  }
-
-  .form-group input:not(:placeholder-shown):not(:valid) + label {
-    color: var(--color-red);
   }
 
   .footer-text {

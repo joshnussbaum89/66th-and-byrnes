@@ -1,6 +1,7 @@
 :root {
   /* Containers */
-  --max-width-small: 1150px;
+  --max-width-small: 750px;
+  --max-width-medium: 1150px;
   --max-width: 1440px;
   --padding-base: clamp(1rem, 2vw, 2rem);
   --section-spacing-base: clamp(4rem, 10vw, 6rem);
@@ -27,34 +28,15 @@
   /* Colors */
 
   --color-white: #f5f3f0;
-  /* --color-white: oklch(96.49% 0.005 78.3); */
-
   --color-white-transparent: #f5f3f0c0;
-  /* --color-white-transparent: oklch(96.49% 0.005 78.3 / 75.29%); */
-
   --color-green-100: #dae1db;
-  /* --color-green-100: oklch(90.27% 0.011 149.85); */
-
   --color-green-200: #0d4021;
-  /* --color-green-200: oklch(32.95% 0.076 152.29); */
-
   --color-yellow: #fcdac1;
-  /* --color-yellow: oklch(91.04% 0.051 58.39); */
-
   --color-peach: #f5d6d0;
-  /* --color-peach: oklch(90.03% 0.036 30.76); */
-
   --color-blue: #d7e1e8;
-  /* --color-blue: oklch(90.42% 0.014 238.03); */
-
   --color-red: #ff3a2d;
-  /* --color-red: oklch(65.32% 0.2449 29.08); */
-
   --color-grey-100: #d9d9d9;
-  /* --color-grey-100: oklch(88.53% 0 0); */
-
   --color-grey-200: #b5b5b5;
-  /* --color-grey-200: oklch(77.31% 0 0); */
 
   --color-background: var(--color-white);
   --color-foreground: var(--color-green-200);
@@ -176,7 +158,7 @@ header {
   align-items: center;
   gap: 1rem;
   width: 100%;
-  max-width: var(--max-width-small);
+  max-width: var(--max-width-medium);
   height: auto;
   margin: 0 auto;
   /* Calculate navigation height */

@@ -17,7 +17,7 @@ const { title, subtitle, bodyText, ctaLink, ctaText, class: className } = Astro.
   <p>{bodyText}</p>
   {
     ctaText && ctaLink && (
-      <a class="site-cta" href={ctaLink}>
+      <a class="site-cta" href={ctaLink} aria-label={ctaText}>
         {ctaText}
       </a>
     )
