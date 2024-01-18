@@ -1,33 +1,33 @@
 ---
 import TextContent from '../../TextContent.astro'
 import ImageWithInfo from '../../ImageWithInfo.astro'
-import fanHeart from '../../../assets/fan-heart.jpg'
-import footballSidelines from '../../../assets/football-sidelines.jpg'
-import lollipop from '../../../assets/lollipop.jpg'
-import party from '../../../assets/party.jpg'
+import balloons from '../../../assets/balloons.png'
+import football from '../../../assets/football.jpg'
+import dudeSunglasses from '../../../assets/dude-sunglasses.jpg'
+import matty from '../../../assets/matty.jpg'
 
 const projects = [
   {
-    image: fanHeart,
-    imageAlt: 'Fan Heart',
+    image: balloons,
+    imageAlt: 'Balloons',
     text: 'Embark on a journey with Lorem - a project where every click unveils a story of style, substance, and digital charisma.',
     backgroundColor: 'var(--color-green-100)',
   },
   {
-    image: footballSidelines,
-    imageAlt: 'Football Sidelines',
+    image: football,
+    imageAlt: 'Football players',
     text: '66th & Byrnes helped Ipsum create a project that transformed ordinary brands into extraordinary influencers, creating a ripple of coolness that echoed across digital landscapes.',
     backgroundColor: 'var(--color-yellow)',
   },
   {
-    image: lollipop,
-    imageAlt: 'Lollipop',
+    image: dudeSunglasses,
+    imageAlt: 'Dude with sunglasses',
     text: 'Acme Adventures is a portfolio of projects where brands and audiences embarked on a journey of connection, engagement, and collaboration.',
     backgroundColor: 'var(--color-peach)',
   },
   {
-    image: party,
-    imageAlt: 'Party',
+    image: matty,
+    imageAlt: 'Matty Matheson',
     text: 'How we helped Globex reach a new audience of over 1 million users through a series of paid and organic social media campaigns.',
     backgroundColor: 'var(--color-blue)',
   },
@@ -75,17 +75,54 @@ const projects = [
     display: grid;
     grid-template-columns: 1fr;
     margin-bottom: 2rem;
+
+    & .image:nth-child(1) {
+      border-radius: var(--border-radius-card) var(--border-radius-card) 0 0;
+      overflow: hidden;
+    }
+
+    & .image:nth-child(4) {
+      border-radius: 0 0 var(--border-radius-card) var(--border-radius-card);
+    }
   }
 
   @media (min-width: 768px) {
     .gallery {
       grid-template-columns: repeat(2, 1fr);
+
+      & .image:nth-child(1) {
+        border-radius: var(--border-radius-card) 0 0 0;
+      }
+
+      & .image:nth-child(2) {
+        border-radius: 0 var(--border-radius-card) 0 0;
+      }
+
+      & .image:nth-child(3) {
+        border-radius: 0 0 0 var(--border-radius-card);
+      }
+
+      & .image:nth-child(4) {
+        border-radius: 0 0 var(--border-radius-card) 0;
+      }
     }
   }
 
   @media (min-width: 1240px) {
     .gallery {
       grid-template-columns: repeat(4, 1fr);
+
+      & .image:nth-child(1) {
+        border-radius: var(--border-radius-card) 0 0 var(--border-radius-card);
+      }
+
+      & .image:nth-child(2) {
+        border-radius: 0;
+      }
+
+      & .image:nth-child(4) {
+        border-radius: 0 var(--border-radius-card) var(--border-radius-card) 0;
+      }
     }
   }
 </style>

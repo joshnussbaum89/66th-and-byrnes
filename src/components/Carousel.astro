@@ -1,54 +1,51 @@
 ---
 import { Picture } from 'astro:assets'
-import heroFullWidthOne from '../assets/hero-full-width-one.jpg'
-import heroFullWidthTwo from '../assets/hero-full-width-two.jpg'
-import heroFullWidthThree from '../assets/hero-full-width-three.jpg'
-import heroFullWidthFour from '../assets/hero-full-width-four.jpg'
+import carouselOne from '../assets/1.png'
+import carouselFour from '../assets/4.png'
+import carouselFive from '../assets/5.png'
+
+export interface Props {
+  class?: string
+}
+
+const { class: className } = Astro.props
 ---
 
-<div class="carousel">
+<div class:list={[className, 'carousel']}>
   <Picture
     class="carousel-image active"
-    src={heroFullWidthOne}
+    src={carouselOne}
     formats={['avif', 'webp']}
     data-image="1"
     loading="eager"
-    alt="Person sitting on a bench in Joshua Tree National Park"
+    alt=""
   />
   <Picture
     class="carousel-image"
-    src={heroFullWidthTwo}
+    src={carouselFour}
     formats={['avif', 'webp']}
     data-image="2"
     loading="eager"
-    alt="Person standing on the grass at night with the backdrop of the moon"
+    alt=""
   />
   <Picture
     class="carousel-image"
-    src={heroFullWidthThree}
+    src={carouselFive}
     formats={['avif', 'webp']}
     data-image="3"
     loading="eager"
-    alt="New York City lights at night"
+    alt=""
   />
-  <Picture
-    class="carousel-image"
-    src={heroFullWidthFour}
-    formats={['avif', 'webp']}
-    data-image="4"
-    loading="eager"
-    alt="A single banana on a pink background"
-  />
+  <div class="overlay">
+    <div class="overlay-content">
+      <p>Make Your Impact</p>
+      <h1>66th & Byrnes</h1>
+      <p>Elevate Your Brand with Influencer Magic and Event Excellence</p>
+    </div>
+  </div>
 </div>
 
 <style>
-  /* TODO: 
-    Can this be full width?
-    Full width creates a horizontal scrolling bug
-    Maybe as a background image?
-    See: https://stackoverflow.com/questions/37589386/how-to-have-a-full-width-image-in-a-div-that-has-padding
-  */
-
   .carousel,
   .carousel-image {
     border-radius: var(--border-radius-card);
@@ -56,7 +53,9 @@ import heroFullWidthFour from '../assets/hero-full-width-four.jpg'
 
   .carousel {
     position: relative;
-    height: 60vh;
+    width: 100%;
+    height: 65vh;
+    max-height: 600px;
     overflow: hidden;
   }
 
@@ -66,11 +65,49 @@ import heroFullWidthFour from '../assets/hero-full-width-four.jpg'
     object-fit: cover;
     height: 100%;
     opacity: 0;
-    transition: opacity var(--transition-long);
+    transition: all var(--transition-long);
+
+    &.active {
+      opacity: 1;
+    }
   }
 
-  .carousel-image.active {
-    opacity: 1;
+  .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.2) 0%,
+      rgba(0, 0, 0, 0.4) 50%,
+      rgba(0, 0, 0, 0.2) 100%
+    );
+
+    & .overlay-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: 100%%;
+      max-width: 500px;
+      color: var(--color-white);
+
+      & p:first-of-type {
+        font-size: clamp(var(--size-xs), 2vw, var(--size-sm));
+        letter-spacing: var(--letter-spacing-large);
+        text-transform: uppercase;
+      }
+
+      & p:last-of-type {
+        max-width: 410px;
+
+        @media (min-width: 768px) {
+          max-width: 450px;
+        }
+      }
+    }
   }
 </style>
 

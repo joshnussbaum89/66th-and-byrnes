@@ -4,8 +4,10 @@ import Mobile from './Mobile.astro'
 ---
 
 <nav>
-  <Desktop />
-  <Mobile />
+  <div class="wrapper">
+    <Desktop />
+    <Mobile />
+  </div>
 </nav>
 
 <style>
@@ -16,9 +18,17 @@ import Mobile from './Mobile.astro'
     right: 0;
     width: 100%;
     z-index: 100;
-    max-width: var(--max-width);
     background-color: var(--color-white);
+    box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.1);
+  }
+
+  .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: var(--max-width);
+    height: var(--nav-height);
     margin: 0 auto;
-    padding: var(--padding-base);
+    padding: 0 var(--padding-base);
   }
 </style>

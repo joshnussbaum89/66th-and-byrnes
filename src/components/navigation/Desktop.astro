@@ -30,7 +30,6 @@ const currentPath = Astro.url.pathname
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: clamp(2rem, 5vw, 4rem);
       width: 100%;
       z-index: 2;
     }
@@ -41,12 +40,12 @@ const currentPath = Astro.url.pathname
 
     .desktop-nav ul {
       display: flex;
-      gap: clamp(2rem, 5vw, 4rem);
+      gap: clamp(2rem, 5vw, 3rem);
     }
 
     .desktop-nav li {
       position: relative;
-      font-size: clamp(var(--size-xs), 2vw, var(--size-sm));
+      font-size: var(--size-sm);
     }
 
     /* Active link styling */

@@ -5,22 +5,29 @@ import Marquee from '../components/Marquee.astro'
 import Vision from '../components/pages/home/Vision.astro'
 import Services from '../components/pages/home/Services.astro'
 import FeaturedWork from '../components/pages/home/FeaturedWork.astro'
-import AboutUs from '../components/pages/home/AboutUs.astro'
 import Contact from '../components/pages/home/Contact.astro'
 ---
 
 <Layout title="66th & Byrnes">
   <header>
-    <h1>Elevate Your Brand with Influencer Magic and Event Excellence</h1>
-    <p>Where Influence and Events Collide for Unmatched Brilliance</p>
+    <Carousel class="carousel" />
   </header>
   <main>
-    <Carousel />
     <Marquee />
     <Vision />
     <Services />
     <FeaturedWork />
-    <AboutUs />
     <Contact />
   </main>
 </Layout>
+
+<style>
+  header {
+    max-width: var(--max-width);
+    padding-bottom: 0;
+  }
+
+  main {
+    padding-top: 0;
+  }
+</style>

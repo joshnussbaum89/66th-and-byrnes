@@ -13,4 +13,7 @@ export default defineConfig({
       lastmod: new Date(),
     }),
   ],
+  devToolbar: {
+    enabled: false,
+  },
 })
