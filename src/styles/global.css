@@ -31,7 +31,7 @@
   --color-white: #f5f3f0;
   --color-white-transparent: #f5f3f0c0;
   --color-green-100: #dae1db;
-  --color-green-200: #0d4021;
+  --color-green-200: #132e1e;
   --color-yellow: #fcdac1;
   --color-peach: #f5d6d0;
   --color-blue: #d7e1e8;
@@ -261,5 +261,6 @@ section {
 /* Pseudo elements */
 
 ::selection {
+  color: var(--color-green-200);
   background: var(--color-peach);
 }

@@ -1,24 +1,28 @@
 ---
-import { Picture } from 'astro:assets'
+import Icon from 'astro-icon'
 
-import logo from '../assets/logo.png'
+const { class: className } = Astro.props
 ---
 
-<!-- TODO: Replace with SVG -->
-<a class="logo" href="/" aria-label="Home" title="Home">
-  <Picture src={logo} formats={['avif', 'webp']} loading="eager" alt="66th & Byrnes Site Logo" />
+<!-- TODO: Replace placeholder logo -->
+<a class:list={['logo', className]} href="/" aria-label="Home" title="Home">
+  <Icon name="logo" />
 </a>
 
 <style>
-  .logo img {
-    position: relative;
-    max-width: 225px;
-    z-index: 4;
+  .logo {
+    display: block;
+  }
 
-    /* TODO: 
-      This is correcting vertically centered layout
-      See if this can be done with flexbox once logo is replaced with SVG 
-    */
-    margin-bottom: 0.5rem;
+  [astro-icon='logo'] {
+    position: relative;
+    max-width: 150px;
+    z-index: 4;
+    fill: var(--color-green-200);
+  }
+
+  /* Services page styling */
+  body[data-path*='/services']:not([data-overlay-displayed='true']) [astro-icon='logo'] {
+    fill: var(--color-white);
   }
 </style>

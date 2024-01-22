@@ -99,7 +99,7 @@ const { image, imageAlt, title, text, ctaLink, ctaText, slideColor, class: class
 
 <script>
   document.addEventListener('astro:page-load', () => {
-    const images = document.querySelectorAll('.image')
+    const images = document.querySelectorAll('.image-with-info')
 
     function handleActiveImagesOnScroll() {
       if (!window.IntersectionObserver) {
