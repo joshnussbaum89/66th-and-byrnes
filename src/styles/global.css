@@ -79,7 +79,6 @@ html {
 }
 
 img,
-picture,
 svg,
 video {
   display: block;
@@ -107,6 +106,13 @@ body {
 
 body[data-overlay-displayed='true'] {
   overflow: hidden;
+}
+
+/* Services page styling */
+[data-path*='/services'] header,
+[data-path*='/services'] nav {
+  color: var(--color-white);
+  background-color: var(--color-green-200);
 }
 
 main {
@@ -161,7 +167,6 @@ header {
   align-items: center;
   gap: 1rem;
   width: 100%;
-  max-width: var(--max-width-medium);
   height: auto;
   margin: 0 auto;
   padding: calc(var(--nav-height) + var(--section-spacing-base)) var(--padding-base)
@@ -182,7 +187,7 @@ section {
   position: absolute;
   width: 100%;
   height: 2px;
-  bottom: -4%;
+  bottom: -2px;
   left: 0;
   background-color: var(--color-green-200);
   transform-origin: right;
@@ -193,6 +198,12 @@ section {
 .site-link:hover::before {
   transform-origin: left;
   transform: scaleX(1);
+}
+
+@media (min-width: 768px) {
+  [data-path*='/services'] nav .site-link::before {
+    background-color: var(--color-white);
+  }
 }
 
 .site-link.bold {

@@ -46,6 +46,7 @@ const projects = [
       projects.map((project) => {
         return (
           <ImageWithInfo
+            class="image-with-info-custom"
             image={project.image}
             imageAlt={project.imageAlt}
             text={project.text}
@@ -74,14 +75,15 @@ const projects = [
   .gallery {
     display: grid;
     grid-template-columns: 1fr;
+    width: 100%;
     margin-bottom: 2rem;
 
-    & .image:nth-child(1) {
+    & .image-with-info-custom:nth-child(1) {
       border-radius: var(--border-radius-card) var(--border-radius-card) 0 0;
       overflow: hidden;
     }
 
-    & .image:nth-child(4) {
+    & .image-with-info-custom:nth-child(4) {
       border-radius: 0 0 var(--border-radius-card) var(--border-radius-card);
     }
   }
@@ -90,19 +92,19 @@ const projects = [
     .gallery {
       grid-template-columns: repeat(2, 1fr);
 
-      & .image:nth-child(1) {
+      & .image-with-info-custom:nth-child(1) {
         border-radius: var(--border-radius-card) 0 0 0;
       }
 
-      & .image:nth-child(2) {
+      & .image-with-info-custom:nth-child(2) {
         border-radius: 0 var(--border-radius-card) 0 0;
       }
 
-      & .image:nth-child(3) {
+      & .image-with-info-custom:nth-child(3) {
         border-radius: 0 0 0 var(--border-radius-card);
       }
 
-      & .image:nth-child(4) {
+      & .image-with-info-custom:nth-child(4) {
         border-radius: 0 0 var(--border-radius-card) 0;
       }
     }
@@ -112,15 +114,16 @@ const projects = [
     .gallery {
       grid-template-columns: repeat(4, 1fr);
 
-      & .image:nth-child(1) {
+      & .image-with-info-custom:nth-child(1) {
         border-radius: var(--border-radius-card) 0 0 var(--border-radius-card);
       }
 
-      & .image:nth-child(2) {
+      & .image-with-info-custom:nth-child(2),
+      & .image-with-info-custom:nth-child(3) {
         border-radius: 0;
       }
 
-      & .image:nth-child(4) {
+      & .image-with-info-custom:nth-child(4) {
         border-radius: 0 var(--border-radius-card) var(--border-radius-card) 0;
       }
     }

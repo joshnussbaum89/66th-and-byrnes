@@ -62,7 +62,7 @@ const socialImageURL = new URL(socialImage || '/images/gradient.jpg', canonicalU
     <script src="../util/section-animations.ts"></script>
   </head>
 
-  <body>
+  <body data-path={Astro.url.pathname}>
     <Navigation />
     <slot />
     <Footer />

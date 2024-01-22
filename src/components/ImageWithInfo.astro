@@ -15,9 +15,9 @@ export interface Props {
 const { image, imageAlt, title, text, ctaLink, ctaText, slideColor, class: className } = Astro.props
 ---
 
-<div class:list={['image', className]}>
+<article class:list={['image-with-info', className]}>
   <Picture src={image} formats={['avif', 'webp']} alt={imageAlt} />
-  <div class="image-info" style={`background-color: ${slideColor || 'var(--color-green-100)'};`}>
+  <div class="info" style={`background-color: ${slideColor || 'var(--color-green-100)'};`}>
     {title && <h3>{title}</h3>}
     <p>{text}</p>
     {
@@ -28,35 +28,38 @@ const { image, imageAlt, title, text, ctaLink, ctaText, slideColor, class: class
       )
     }
   </div>
-</div>
+</article>
 
 <style>
-  .image {
+  .image-with-info {
     position: relative;
-    height: 425px;
+    height: 100%;
+    max-height: 425px;
     overflow: hidden;
   }
 
-  .image img {
+  .image-with-info img {
     transition: transform var(--transition-normal);
-  }
 
-  @media (min-width: 768px) {
-    .image:hover img {
-      transform: scale(1.05);
-      /* 
-        filter: blur(2px);
-        Not a smooth transition, transition is temporarily removed
-        This causes a flash of whitespace inbetween images 
-      */
+    @media (min-width: 1240px) {
+      & {
+        height: 100%;
+        object-fit: cover;
+      }
     }
   }
 
-  .image.active img {
+  @media (min-width: 768px) {
+    .image-with-info:hover img {
+      transform: scale(1.05);
+    }
+  }
+
+  .image-with-info.active img {
     transform: scale(1.05);
   }
 
-  .image .image-info {
+  .image-with-info .info {
     content: '';
     position: absolute;
     bottom: 0;
@@ -78,18 +81,18 @@ const { image, imageAlt, title, text, ctaLink, ctaText, slideColor, class: class
   }
 
   @media (min-width: 768px) {
-    .image:hover .image-info {
+    .image-with-info:hover .info {
       opacity: 1;
       transform: translateY(0);
     }
   }
 
-  .image.active .image-info {
+  .image-with-info.active .info {
     opacity: 1;
     transform: translateY(0);
   }
 
-  .image-info p {
+  .info p {
     font-size: var(--size-xs);
   }
 </style>

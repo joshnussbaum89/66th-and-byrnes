@@ -72,6 +72,19 @@ const currentPath = Astro.url.pathname
     width: 1.5rem;
   }
 
+  /* Services page styling */
+  body[data-path='/services'] .hamburger .top,
+  body[data-path='/services'] .hamburger .middle,
+  body[data-path='/services'] .hamburger .bottom {
+    background: var(--color-white);
+  }
+
+  body[data-path='/services'] .hamburger.active .top,
+  body[data-path='/services'] .hamburger.active .middle,
+  body[data-path='/services'] .hamburger.active .bottom {
+    background: var(--color-green-200);
+  }
+
   .hamburger .top {
     transform: translateY(-4px);
   }
@@ -100,6 +113,7 @@ const currentPath = Astro.url.pathname
     height: 100vh;
     opacity: 0;
     visibility: hidden;
+    color: var(--color-green-200);
     background-color: var(--color-white);
     transition: all var(--transition-navigation);
   }

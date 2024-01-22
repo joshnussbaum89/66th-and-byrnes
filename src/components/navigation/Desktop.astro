@@ -56,11 +56,28 @@ const currentPath = Astro.url.pathname
       position: absolute;
       width: 100%;
       height: 2px;
-      bottom: -4%;
+      bottom: -2px;
       left: 0;
       background-color: var(--color-green-200);
       transform-origin: left;
       transform: scaleX(1);
     }
+  }
+
+  /* Services page styling */
+  body[data-path*='/services'] .site-cta {
+    color: var(--color-green-200);
+    background-color: var(--color-white);
+    border: 2px solid var(--color-green-200);
+
+    &:hover {
+      color: var(--color-white);
+      background-color: var(--color-green-200);
+      border: 2px solid var(--color-white);
+    }
+  }
+
+  body[data-path*='/services'] .desktop-nav ul li[data-path='services'] a::before {
+    background-color: var(--color-white);
   }
 </style>
