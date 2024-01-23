@@ -1,6 +1,7 @@
 ---
 import Contact from '../components/pages/home/Contact.astro'
 import Layout from '../layouts/Layout.astro'
+import TabList from '../components/pages/services/TabList.astro'
 
 export interface Props {
   title: string
@@ -13,13 +14,23 @@ const { title, description } = Astro.props
 <Layout title={title} description={description}>
   <header>
     <h1>Elevate Your Brand Experience with Our Diverse Services</h1>
-    <p>
-      We execute impactful strategies in influencer marketing, event activation, and talent
-      management
-    </p>
   </header>
+  <TabList />
   <main>
     <slot />
     <Contact />
   </main>
 </Layout>
+
+<style>
+  header {
+    margin: 0 auto;
+    text-align: left;
+
+    @media (min-width: 1024px) {
+      & {
+        text-align: center;
+      }
+    }
+  }
+</style>

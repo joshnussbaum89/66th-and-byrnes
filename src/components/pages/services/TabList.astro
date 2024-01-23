@@ -1,0 +1,72 @@
+---
+import services from '../../../../public/services.json'
+
+const currentPath = Astro.url.pathname
+---
+
+<nav class="services-navigation" aria-label="Services navigation">
+  <ul role="tablist">
+    {
+      services.map((service, index) => (
+        <li>
+          <a
+            role="tab"
+            id={`tab-${index}`}
+            aria-controls={`panel-${index}`}
+            aria-selected={currentPath === service.url}
+            href={service.url}
+          >
+            {service.title}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<style>
+  .services-navigation {
+    padding-bottom: var(--section-spacing-base);
+
+    & ul {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 2rem;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--padding-base);
+
+      & li {
+        width: 100%;
+        text-align: left;
+      }
+
+      @media (min-width: 1024px) {
+        & {
+          gap: var(--padding-base);
+          flex-direction: row;
+        }
+      }
+    }
+
+    & a {
+      display: block;
+      padding-bottom: 0.5rem;
+      font-size: var(--size-xs);
+      color: var(--color-grey-200);
+      border-bottom: 2px solid var(--color-grey-200);
+      transition: all var(--transition-normal);
+
+      &:hover {
+        color: var(--color-white);
+        border-bottom: 2px solid var(--color-white);
+      }
+
+      &[aria-selected='true'] {
+        color: var(--color-white);
+        border-bottom: 2px solid var(--color-white);
+      }
+    }
+  }
+</style>

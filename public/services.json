@@ -1,0 +1,37 @@
+[
+  {
+    "title": "Influencer Strategy",
+    "description": "Arm your brand with a strategy that's sharp, savvy, and undeniably cool.",
+    "url": "/services/influencer-strategy",
+    "icon": "phone",
+    "backgroundColor": "var(--color-green-100)"
+  },
+  {
+    "title": "Event Activation",
+    "description": "Bold concepts, explosive execution, and an unforgettable impact that echoes long after the curtain falls.",
+    "url": "/services/event-activation",
+    "icon": "smiley",
+    "backgroundColor": "var(--color-yellow)"
+  },
+  {
+    "title": "Marketing Strategy",
+    "description": "Our marketing strategy isn't about following trends; it's about setting them. Make your brand the disruptor, not the disrupted.",
+    "url": "/services/marketing-strategy",
+    "icon": "chart",
+    "backgroundColor": "var(--color-peach)"
+  },
+  {
+    "title": "On-Site Management",
+    "description": "With on-site management, every event is a masterpiece of precision, flair, and zero stress.",
+    "url": "/services/on-site-management",
+    "icon": "clipboard",
+    "backgroundColor": "var(--color-blue)"
+  },
+  {
+    "title": "Talent Booking",
+    "description": "Our talent booking service is the secret sauce, bringing charisma and credibility to your brand through strategic influencer partnerships.",
+    "url": "/services/talent-booking",
+    "icon": "world",
+    "backgroundColor": "var(--color-green-100)"
+  }
+]

@@ -1,7 +1,13 @@
 ---
 import ServicesLayout from '../../layouts/ServicesLayout.astro'
+import services from '../../../public/services.json'
+
+const onSiteManagementService = services[3]
 ---
 
 <ServicesLayout title="66th & Byrnes | On-Site Management" description="On-Site Management">
-  <h1>On-Site Management</h1>
+  <section id="panel-3" role="tabpanel" aria-labelledby="tab-3">
+    <h2>{onSiteManagementService.title}</h2>
+    <p>{onSiteManagementService.description}</p>
+  </section>
 </ServicesLayout>

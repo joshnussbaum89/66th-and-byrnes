@@ -9,7 +9,7 @@ const { class: className } = Astro.props
   <Icon name="logo" />
 </a>
 
-<style>
+<style is:global>
   .logo {
     display: block;
   }
@@ -19,6 +19,10 @@ const { class: className } = Astro.props
     max-width: 150px;
     z-index: 4;
     fill: var(--color-green-200);
+  }
+
+  footer [astro-icon='logo'] {
+    fill: var(--color-green-200) !important;
   }
 
   /* Services page styling */

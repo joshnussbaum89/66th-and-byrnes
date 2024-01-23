@@ -1,7 +1,13 @@
 ---
 import ServicesLayout from '../../layouts/ServicesLayout.astro'
+import services from '../../../public/services.json'
+
+const eventActivationService = services[1]
 ---
 
 <ServicesLayout title="66th & Byrnes | Event Activation" description="Event Activation">
-  <h1>Event Activation</h1>
+  <section id="panel-1" role="tabpanel" aria-labelledby="tab-1">
+    <h2>{eventActivationService.title}</h2>
+    <p>{eventActivationService.description}</p>
+  </section>
 </ServicesLayout>

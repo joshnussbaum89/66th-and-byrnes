@@ -8,10 +8,29 @@ const currentPath = Astro.url.pathname
   <Logo />
   <ul data-current-url={currentPath}>
     <li data-path="services">
-      <a class="site-link" href="/services" aria-label="Services">Services</a>
+      <a
+        class="site-link"
+        href="/services"
+        aria-label="Services"
+        aria-selected={currentPath.includes('/services')}>Services</a
+      >
     </li>
-    <li data-path="work"><a class="site-link" href="/work" aria-label="Work">Work</a></li>
-    <li data-path="about"><a class="site-link" href="/about" aria-label="About">About</a></li>
+    <li data-path="work">
+      <a
+        class="site-link"
+        href="/work"
+        aria-label="Work"
+        aria-selected={currentPath.includes('/work')}>Work</a
+      >
+    </li>
+    <li data-path="about">
+      <a
+        class="site-link"
+        href="/about"
+        aria-label="About"
+        aria-selected={currentPath.includes('/about')}>About</a
+      >
+    </li>
   </ul>
   <a
     class="site-cta"
@@ -49,9 +68,7 @@ const currentPath = Astro.url.pathname
     }
 
     /* Active link styling */
-    .desktop-nav ul[data-current-url^='/services'] li[data-path='services'] a::before,
-    .desktop-nav ul[data-current-url^='/work'] li[data-path='work'] a::before,
-    .desktop-nav ul[data-current-url^='/about'] li[data-path='about'] a::before {
+    .desktop-nav ul a[aria-selected='true']::before {
       content: '';
       position: absolute;
       width: 100%;

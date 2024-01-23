@@ -1,43 +1,7 @@
 ---
 import TextContent from '../../TextContent.astro'
 import InfoCard from '../../InfoCard.astro'
-
-const services = [
-  {
-    title: 'Influencer Strategy',
-    bodyText: "Arm your brand with a strategy that's sharp, savvy, and undeniably cool.",
-    icon: 'phone',
-    backgroundColor: 'var(--color-green-100)',
-  },
-  {
-    title: 'Event Activation',
-    bodyText:
-      'Bold concepts, explosive execution, and an unforgettable impact that echoes long after the curtain falls.',
-    icon: 'smiley',
-    backgroundColor: 'var(--color-yellow)',
-  },
-  {
-    title: 'Marketing Strategy',
-    bodyText:
-      "Our marketing strategy isn't about following trends; it's about setting them. Make your brand the disruptor, not the disrupted.",
-    icon: 'chart',
-    backgroundColor: 'var(--color-peach)',
-  },
-  {
-    title: 'On-Site Management',
-    bodyText:
-      'With on-site management, every event is a masterpiece of precision, flair, and zero stress.',
-    icon: 'clipboard',
-    backgroundColor: 'var(--color-blue)',
-  },
-  {
-    title: 'Talent Booking',
-    bodyText:
-      'Our talent booking service is the secret sauce, bringing charisma and credibility to your brand through strategic influencer partnerships.',
-    icon: 'world',
-    backgroundColor: 'var(--color-green-100)',
-  },
-]
+import services from '../../../../public/services.json'
 ---
 
 <section id="services" class="services site-section">
@@ -56,10 +20,10 @@ const services = [
         return (
           <InfoCard
             title={service.title}
-            bodyText={service.bodyText}
+            description={service.description}
             icon={service.icon}
             ctaText="Learn More"
-            ctaLink="/services"
+            ctaLink={service.url}
             backgroundColor={service.backgroundColor}
           />
         )

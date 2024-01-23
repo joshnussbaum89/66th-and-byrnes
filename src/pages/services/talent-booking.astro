@@ -1,7 +1,13 @@
 ---
 import ServicesLayout from '../../layouts/ServicesLayout.astro'
+import services from '../../../public/services.json'
+
+const talentBookingService = services[4]
 ---
 
 <ServicesLayout title="66th & Byrnes | Talent Booking" description="Talent Booking">
-  <h1>Talent Booking</h1>
+  <section id="panel-4" role="tabpanel" aria-labelledby="tab-4">
+    <h2>{talentBookingService.title}</h2>
+    <p>{talentBookingService.description}</p>
+  </section>
 </ServicesLayout>

@@ -14,10 +14,29 @@ const currentPath = Astro.url.pathname
   <div class="mobile-nav-overlay">
     <ul data-current-url={currentPath}>
       <li data-path="services">
-        <a class="site-link" href="/services" aria-label="Services">Services</a>
+        <a
+          class="site-link"
+          href="/services"
+          aria-label="Services"
+          aria-selected={currentPath.includes('/services')}>Services</a
+        >
       </li>
-      <li data-path="work"><a class="site-link" href="/work" aria-label="Work">Work</a></li>
-      <li data-path="about"><a class="site-link" href="/about" aria-label="About">About</a></li>
+      <li data-path="work">
+        <a
+          class="site-link"
+          href="/work"
+          aria-label="Work"
+          aria-selected={currentPath.includes('/work')}>Work</a
+        >
+      </li>
+      <li data-path="about">
+        <a
+          class="site-link"
+          href="/about"
+          aria-label="About"
+          aria-selected={currentPath.includes('/about')}>About</a
+        >
+      </li>
       <li>
         <a
           class="site-cta"
@@ -73,15 +92,15 @@ const currentPath = Astro.url.pathname
   }
 
   /* Services page styling */
-  body[data-path='/services'] .hamburger .top,
-  body[data-path='/services'] .hamburger .middle,
-  body[data-path='/services'] .hamburger .bottom {
+  body[data-path*='/services'] .hamburger .top,
+  body[data-path*='/services'] .hamburger .middle,
+  body[data-path*='/services'] .hamburger .bottom {
     background: var(--color-white);
   }
 
-  body[data-path='/services'] .hamburger.active .top,
-  body[data-path='/services'] .hamburger.active .middle,
-  body[data-path='/services'] .hamburger.active .bottom {
+  body[data-path*='/services'] .hamburger.active .top,
+  body[data-path*='/services'] .hamburger.active .middle,
+  body[data-path*='/services'] .hamburger.active .bottom {
     background: var(--color-green-200);
   }
 
@@ -144,9 +163,7 @@ const currentPath = Astro.url.pathname
   }
 
   /* Active link styling */
-  .mobile-nav-overlay ul[data-current-url^='/services'] li[data-path='services'] a::before,
-  .mobile-nav-overlay ul[data-current-url^='/work'] li[data-path='work'] a::before,
-  .mobile-nav-overlay ul[data-current-url^='/about'] li[data-path='about'] a::before {
+  .mobile-nav-overlay ul a[aria-selected='true']::before {
     content: '';
     position: absolute;
     width: 100%;
