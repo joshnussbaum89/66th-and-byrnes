@@ -1,13 +1,38 @@
 ---
+import { Picture } from 'astro:assets'
 import ServicesLayout from '../../layouts/ServicesLayout.astro'
 import services from '../../../public/services.json'
+import eventImage from '../../assets/party.jpg'
 
 const eventActivationService = services[1]
 ---
 
 <ServicesLayout title="66th & Byrnes | Event Activation" description="Event Activation">
-  <section id="panel-1" role="tabpanel" aria-labelledby="tab-1">
-    <h2>{eventActivationService.title}</h2>
+  <section id="panel-1" class="panel" role="tabpanel" aria-labelledby="tab-1">
+    <h2>High Quality Events</h2>
     <p>{eventActivationService.description}</p>
+    <Picture class="image" src={eventImage} formats={['avif', 'webp']} alt="" />
   </section>
 </ServicesLayout>
+
+<style>
+  .panel {
+    max-width: var(--max-width-medium);
+    text-align: center;
+
+    & h2 {
+      margin-bottom: 1rem;
+    }
+
+    & p {
+      margin-bottom: var(--section-spacing-base);
+    }
+
+    & .image {
+      max-height: 650px;
+      object-fit: cover;
+      border-radius: var(--border-radius-card);
+      box-shadow: var(--box-shadow-normal);
+    }
+  }
+</style>

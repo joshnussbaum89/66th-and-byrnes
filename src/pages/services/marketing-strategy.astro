@@ -1,13 +1,34 @@
 ---
+import { Picture } from 'astro:assets'
 import ServicesLayout from '../../layouts/ServicesLayout.astro'
-import services from '../../../public/services.json'
-
-const marketingStrategyService = services[2]
+import marketingImage from '../../assets/marketing.jpg'
 ---
 
 <ServicesLayout title="66th & Byrnes | Marketing Strategy" description="Marketing Strategy">
-  <section id="panel-2" role="tabpanel" aria-labelledby="tab-2">
-    <h2>{marketingStrategyService.title}</h2>
-    <p>{marketingStrategyService.description}</p>
+  <section id="panel-2" class="panel" role="tabpanel" aria-labelledby="tab-2">
+    <p>
+      In the dynamic landscape of business, a powerful marketing strategy is the compass that guides
+      brands to new heights. At 66th & Brynes, we specialize in crafting bespoke marketing
+      strategies designed to propel your brand into the spotlight.
+    </p>
+    <Picture class="image" src={marketingImage} formats={['avif', 'webp']} alt="" />
   </section>
 </ServicesLayout>
+
+<style>
+  .panel {
+    max-width: var(--max-width-medium);
+    text-align: center;
+
+    & p {
+      margin-bottom: var(--section-spacing-base);
+    }
+
+    & .image {
+      max-height: 650px;
+      object-fit: cover;
+      border-radius: var(--border-radius-card);
+      box-shadow: var(--box-shadow-normal);
+    }
+  }
+</style>

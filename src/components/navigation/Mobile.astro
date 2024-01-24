@@ -16,7 +16,7 @@ const currentPath = Astro.url.pathname
       <li data-path="services">
         <a
           class="site-link"
-          href="/services"
+          href="/services/influencer-strategy"
           aria-label="Services"
           aria-selected={currentPath.includes('/services')}>Services</a
         >
@@ -160,19 +160,6 @@ const currentPath = Astro.url.pathname
   .mobile-nav-overlay ul li:nth-of-type(4) {
     position: absolute;
     bottom: 10%;
-  }
-
-  /* Active link styling */
-  .mobile-nav-overlay ul a[aria-selected='true']::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    bottom: -4%;
-    left: 0;
-    background-color: var(--color-green-200);
-    transform-origin: left;
-    transform: scaleX(1);
   }
 
   .mobile-nav-overlay .site-cta {

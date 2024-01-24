@@ -1,13 +1,88 @@
 ---
+import { Picture } from 'astro:assets'
+import Icon from 'astro-icon'
 import ServicesLayout from '../../layouts/ServicesLayout.astro'
 import services from '../../../public/services.json'
+import fanHeartImage from '../../assets/fan-heart.jpg'
 
 const influencerStrategyService = services[0]
 ---
 
 <ServicesLayout title="66th & Byrnes | Influencer Strategy" description="Influencer Strategy">
-  <section id="panel-0" role="tabpanel" aria-labelledby="tab-0">
-    <h2>{influencerStrategyService.title}</h2>
-    <p>{influencerStrategyService.description}</p>
+  <section id="panel-0" class="panel" role="tabpanel" aria-labelledby="tab-0">
+    <Picture class="image" src={fanHeartImage} formats={['avif', 'webp']} alt="" />
+    <div class="site-content">
+      <h2>Strategic Campaigns</h2>
+      <p>{influencerStrategyService.description}</p>
+      <h3>Full-Service Campaigns Include: <Icon name="arrow-right-down" /></h3>
+      <ul>
+        <li><Icon name="check" />Strategy</li>
+        <li><Icon name="check" />Content Creation</li>
+        <li><Icon name="check" />Management</li>
+        <li><Icon name="check" />Reporting</li>
+        <li><Icon name="check" />Optimization</li>
+        <li><Icon name="check" />Community Management</li>
+        <li><Icon name="check" />Paid Media</li>
+      </ul>
+    </div>
   </section>
 </ServicesLayout>
+
+<style>
+  .panel {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--section-spacing-base);
+    grid-template-areas:
+      'image'
+      'content';
+
+    @media (min-width: 1024px) {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-areas: 'content image';
+    }
+  }
+
+  .site-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+    grid-area: content;
+    text-align: left;
+
+    h3 {
+      position: relative;
+      color: var(--color-grey-200);
+
+      [astro-icon='arrow-right-down'] {
+        position: absolute;
+        top: 50%;
+        right: -3rem;
+        fill: var(--color-grey-200);
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+
+    ul li {
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      svg {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+    }
+  }
+
+  .image {
+    grid-area: image;
+    max-height: 650px;
+    object-fit: cover;
+    border-radius: var(--border-radius-card);
+    box-shadow: var(--box-shadow-normal);
+  }
+</style>

@@ -32,21 +32,21 @@ const currentPath = Astro.url.pathname
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 2rem;
+      gap: 1.5rem;
       max-width: var(--max-width);
       margin: 0 auto;
       padding: 0 var(--padding-base);
 
+      @media (min-width: 1024px) {
+        & {
+          flex-direction: row;
+          gap: var(--padding-base);
+        }
+      }
+
       & li {
         width: 100%;
         text-align: left;
-      }
-
-      @media (min-width: 1024px) {
-        & {
-          gap: var(--padding-base);
-          flex-direction: row;
-        }
       }
     }
 
@@ -58,11 +58,7 @@ const currentPath = Astro.url.pathname
       border-bottom: 2px solid var(--color-grey-200);
       transition: all var(--transition-normal);
 
-      &:hover {
-        color: var(--color-white);
-        border-bottom: 2px solid var(--color-white);
-      }
-
+      &:hover,
       &[aria-selected='true'] {
         color: var(--color-white);
         border-bottom: 2px solid var(--color-white);
