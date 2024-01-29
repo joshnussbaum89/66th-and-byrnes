@@ -1,13 +1,53 @@
 ---
+import { Picture } from 'astro:assets'
 import ServicesLayout from '../../layouts/ServicesLayout.astro'
 import services from '../../../public/services.json'
+import onSiteManagementImage from '../../assets/on-site-management.png'
 
 const onSiteManagementService = services[3]
 ---
 
-<ServicesLayout title="66th & Byrnes | On-Site Management" description="On-Site Management">
-  <section id="panel-3" role="tabpanel" aria-labelledby="tab-3">
-    <h2>{onSiteManagementService.title}</h2>
-    <p>{onSiteManagementService.description}</p>
+<ServicesLayout title="66th & Byrnes | On-site Management" description="On-site Management">
+  <section id="panel-3" class="panel" role="tabpanel" aria-labelledby="tab-3">
+    <div class="panel-content">
+      <h2>On-site Management Solutions</h2>
+      <p>{onSiteManagementService.description}</p>
+    </div>
+    <Picture class="image" src={onSiteManagementImage} formats={['avif', 'webp']} alt="" />
   </section>
 </ServicesLayout>
+
+<style>
+  .panel {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--section-spacing-base);
+
+    @media (min-width: 1024px) {
+      & {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    & .panel-content {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      text-align: center;
+
+      @media (min-width: 1024px) {
+        & {
+          align-items: flex-start;
+          text-align: left;
+        }
+      }
+    }
+
+    & .image {
+      max-height: 650px;
+      object-fit: cover;
+      border-radius: var(--border-radius-card);
+      box-shadow: var(--box-shadow-normal);
+    }
+  }
+</style>

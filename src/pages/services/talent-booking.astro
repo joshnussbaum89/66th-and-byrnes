@@ -1,13 +1,98 @@
 ---
+import { Image } from 'astro:assets'
+import Icon from 'astro-icon'
 import ServicesLayout from '../../layouts/ServicesLayout.astro'
-import services from '../../../public/services.json'
-
-const talentBookingService = services[4]
+import imageOne from '../../assets/2.png'
+import imageTwo from '../../assets/football.jpg'
+import imageThree from '../../assets/3.png'
+import imageFour from '../../assets/dude-sunglasses.jpg'
 ---
 
 <ServicesLayout title="66th & Byrnes | Talent Booking" description="Talent Booking">
   <section id="panel-4" role="tabpanel" aria-labelledby="tab-4">
-    <h2>{talentBookingService.title}</h2>
-    <p>{talentBookingService.description}</p>
+    <div class="card-container">
+      <article class="card">
+        <h2><Icon name="world" />Discover</h2>
+        <p>
+          We specialize in designing intent-driven campaigns that merge the needs of brands,
+          audiences and influencers.
+        </p>
+      </article>
+      <article class="card">
+        <h2><Icon name="phone" />Engage</h2>
+        <p>We engage with your audience through authentic, meaningful content.</p>
+      </article>
+      <article class="card">
+        <h2><Icon name="deliver" />Deliver</h2>
+        <p>
+          We deliver results through our proprietary technology, data-driven insights and a team of
+          experts.
+        </p>
+      </article>
+    </div>
+    <div class="panel-images">
+      <Image class="image" src={imageOne} alt="" format="webp" />
+      <Image class="image" src={imageTwo} alt="" format="webp" />
+      <Image class="image" src={imageThree} alt="" format="webp" />
+      <Image class="image" src={imageFour} alt="" format="webp" />
+    </div>
   </section>
 </ServicesLayout>
+
+<style>
+  .card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    margin-bottom: var(--section-spacing-base);
+
+    & .card {
+      text-align: left;
+
+      & h2 {
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        [astro-icon] {
+          width: 2rem;
+          height: 2rem;
+        }
+      }
+    }
+  }
+
+  .panel-images {
+    display: grid;
+    grid-template-columns: 1fr 0.5fr 0.6fr;
+    grid-template-rows: repeat(2, 1fr);
+    gap: clamp(0.5rem, 1vw, 1rem);
+    grid-template-areas:
+      'a b d'
+      'a c d';
+
+    & .image {
+      height: 100%;
+      object-fit: cover;
+      border-radius: var(--border-radius-card);
+      box-shadow: var(--box-shadow-normal);
+
+      &:nth-of-type(1) {
+        grid-area: a;
+      }
+
+      &:nth-of-type(2) {
+        grid-area: b;
+      }
+
+      &:nth-of-type(3) {
+        grid-area: c;
+      }
+
+      &:nth-of-type(4) {
+        grid-area: d;
+      }
+    }
+  }
+</style>
