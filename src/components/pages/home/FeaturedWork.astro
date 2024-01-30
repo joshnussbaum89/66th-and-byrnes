@@ -73,8 +73,6 @@ const projects = [
   }
 
   .gallery {
-    display: grid;
-    grid-template-columns: 1fr;
     width: 100%;
     margin-bottom: 2rem;
     box-shadow: var(--box-shadow-normal);
@@ -92,6 +90,7 @@ const projects = [
 
   @media (min-width: 768px) {
     .gallery {
+      display: grid;
       grid-template-columns: repeat(2, 1fr);
 
       & .image-with-info-custom:nth-child(1) {
