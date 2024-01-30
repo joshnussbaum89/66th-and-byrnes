@@ -1,7 +1,7 @@
 ---
-import Contact from '../components/pages/home/Contact.astro'
 import Layout from '../layouts/Layout.astro'
 import TabList from '../components/pages/services/TabList.astro'
+import Contact from '../components/Contact.astro'
 
 export interface Props {
   title: string
@@ -24,8 +24,13 @@ const { title, description } = Astro.props
 
 <style>
   header {
+    max-width: initial;
     margin: 0 auto;
     text-align: left;
+
+    & h1 {
+      max-width: var(--max-width);
+    }
 
     @media (min-width: 1024px) {
       & {

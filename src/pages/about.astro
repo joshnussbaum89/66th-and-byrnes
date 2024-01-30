@@ -1,17 +1,50 @@
 ---
+import { Picture } from 'astro:assets'
 import Layout from '../layouts/Layout.astro'
-import AboutUs from '../components/pages/home/AboutUs.astro'
+import heroImage from '../assets/hero-full-width-three.jpg'
+import Values from '../components/pages/about/Values.astro'
+import AboutUs from '../components/pages/about/AboutUs.astro'
+import Contact from '../components/Contact.astro'
 ---
 
 <Layout title="66th & Byrnes | About">
   <header>
-    <h1>An Award-Winning Influencer Marketing & Event Agency</h1>
-    <p>
-      66th & Byrnes is an award-winning influencer marketing and event agency that is passionate
-      about creating meaningful experiences that drive results
-    </p>
+    <div class="header-info">
+      <h1>An Award-Winning Influencer Marketing & Event Agency</h1>
+      <p>
+        66th & Byrnes is an award-winning influencer marketing and event agency that is passionate
+        about creating meaningful experiences that drive results. We are a team of creative thinkers
+        and doers who are dedicated to helping brands connect with their audiences in a meaningful
+        way.
+      </p>
+    </div>
+    <Picture src={heroImage} class="hero-image" alt="New York City street" />
   </header>
   <main>
+    <Values />
     <AboutUs />
+    <Contact />
   </main>
 </Layout>
+
+<style>
+  .header-info {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: var(--section-spacing-base);
+
+    @media (min-width: 768px) {
+      & {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
+        text-align: left;
+      }
+    }
+  }
+
+  .hero-image {
+    border-radius: var(--border-radius-card);
+    box-shadow: var(--box-shadow-normal);
+  }
+</style>

@@ -1,0 +1,78 @@
+---
+import TextContent from '../../TextContent.astro'
+import InfoCard from '../../InfoCard.astro'
+
+const values = [
+  {
+    title: 'Unique Ideas',
+    description: "We're not afraid to be different. We'll help you stand out from the crowd.",
+    icon: 'sunglasses',
+    color: 'var(--color-green-100)',
+  },
+  {
+    title: 'Delivering Results',
+    description:
+      'We are a team of creative thinkers and doers who are dedicated to helping brands connect with their audiences in a meaningful way.',
+    icon: 'thumb-up',
+    color: 'var(--color-yellow)',
+  },
+  {
+    title: 'Clear Communication',
+    description: 'We communicate clearly and effectively and always keep our clients in the loop.',
+    icon: 'phone',
+    color: 'var(--color-peach)',
+  },
+  {
+    title: 'Integrity',
+    description: 'We are honest, transparent, and accountable in everything we do.',
+    icon: 'smiley',
+    color: 'var(--color-blue)',
+  },
+  {
+    title: 'Collaboration',
+    description:
+      'Collaboration is key to our success, and we will work together to achieve your goals.',
+    icon: 'heart-handshake',
+    color: 'var(--color-green-100)',
+  },
+  {
+    title: 'Going the Extra Mile',
+    description: "We don't just meet expectations, we exceed them. Rest assured, we've got you.",
+    icon: 'road',
+    color: 'var(--color-yellow)',
+  },
+]
+---
+
+<section id="values">
+  <TextContent
+    title="What Makes Us Different"
+    subtitle="The Values We Live By"
+    class="text-content-custom"
+  />
+  <div class="value-cards">
+    {
+      values.map((value) => (
+        <InfoCard
+          title={value.title}
+          description={value.description}
+          icon={value.icon}
+          backgroundColor={value.color}
+        />
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .text-content-custom {
+    margin-bottom: 2rem;
+  }
+
+  .value-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    justify-items: center;
+    gap: 2rem;
+  }
+</style>

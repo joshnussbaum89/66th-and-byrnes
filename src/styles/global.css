@@ -17,7 +17,7 @@
   --size-xxs: 0.75rem;
   --size-xs: 1rem;
   --size-sm: 1.25rem;
-  --size-base: 1.563rem;
+  --size-base: 1.5rem;
   --size-lg: 2.441rem;
   --size-xl: 3.052rem;
   --size-xxl: 3.815rem;
@@ -168,6 +168,7 @@ header {
   align-items: center;
   gap: 1rem;
   width: 100%;
+  max-width: var(--max-width);
   height: auto;
   margin: 0 auto;
   padding: calc(var(--nav-height) + var(--section-spacing-base)) var(--padding-base)

@@ -8,13 +8,22 @@ export interface Props {
   ctaText?: string
   ctaLink?: string
   backgroundColor?: string | null
+  class?: string
 }
 
-const { title, description, icon, ctaText, ctaLink, backgroundColor } = Astro.props
+const {
+  title,
+  description,
+  icon,
+  ctaText,
+  ctaLink,
+  backgroundColor,
+  class: className,
+} = Astro.props
 ---
 
 <article
-  class="info-card"
+  class:list={[className, 'info-card']}
   style={`background-color: ${backgroundColor || 'var(--color-green-100)'};`}
 >
   <Icon name={icon} />
@@ -44,8 +53,10 @@ const { title, description, icon, ctaText, ctaLink, backgroundColor } = Astro.pr
     border-radius: var(--border-radius-card);
   }
 
-  .info-card svg {
+  .info-card [astro-icon] {
     width: 2rem;
+    height: 2rem;
+    stroke: var(--color-green-200);
   }
 
   .info-card h3 {
