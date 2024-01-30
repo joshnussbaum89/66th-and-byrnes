@@ -32,6 +32,7 @@ const influencerStrategyService = services[0]
   .panel {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    justify-content: center;
     gap: var(--section-spacing-base);
 
     & .panel-content {
@@ -46,12 +47,19 @@ const influencerStrategyService = services[0]
         color: var(--color-grey-200);
 
         [astro-icon='arrow-right-down'] {
-          position: absolute;
-          top: 50%;
-          right: -3rem;
-          fill: var(--color-grey-200);
-          width: 2rem;
-          height: 2rem;
+          display: none;
+
+          @media (min-width: 768px) {
+            & {
+              display: block;
+              position: absolute;
+              top: 50%;
+              right: -3rem;
+              fill: var(--color-grey-200);
+              width: 2rem;
+              height: 2rem;
+            }
+          }
         }
       }
 
