@@ -58,6 +58,7 @@ const values = [
           description={value.description}
           icon={value.icon}
           backgroundColor={value.color}
+          class="info-card-custom"
         />
       ))
     }
@@ -71,8 +72,17 @@ const values = [
 
   .value-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: 1fr;
     justify-items: center;
     gap: 2rem;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    }
+
+    & .info-card-custom {
+      width: 100%;
+      max-width: 400px;
+    }
   }
 </style>
