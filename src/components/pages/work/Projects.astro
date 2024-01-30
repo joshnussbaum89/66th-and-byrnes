@@ -1,0 +1,116 @@
+---
+import { Picture } from 'astro:assets'
+import imageOne from '../../../assets/1.png'
+import imageTwo from '../../../assets/2.png'
+import imageThree from '../../../assets/3.png'
+
+const projectData = [
+  {
+    title: 'Cool Company',
+    sub_title: 'Services',
+    services: 'Influencer Marketing, Event Activation',
+    year: '2023',
+    results:
+      'Cool Company hired 66th & Brynes to help with their influencer marketing and event activation. We were able to reach 1 million people and increase sales by 20% in the first quarter of 2023.',
+    images: [imageOne, imageTwo, imageThree],
+  },
+  {
+    title: 'Hot Company',
+    sub_title: 'Services',
+    services: 'Marketing Services',
+    year: '2023',
+    results:
+      '66th & Brynes was able to increase sales by 30% in the first quarter of 2023 for Hot Company and we are excited to continue to work with them in the future.',
+    images: [imageTwo, imageThree, imageOne],
+  },
+]
+---
+
+<section id="projects" class="projects">
+  {
+    projectData.map((project) => {
+      return (
+        <div class="project">
+          <div class="project-info">
+            <h2>{project.title}</h2>
+            <h3>Services</h3>
+            <p>{project.services}</p>
+            <h3>Year</h3>
+            <p>{project.year}</p>
+            <h3>Results</h3>
+            <p>{project.results}</p>
+          </div>
+          <div class="project-image-carousel">
+            <Picture src={project.images[0]} alt="" class="image" />
+          </div>
+        </div>
+      )
+    })
+  }
+</section>
+
+<style>
+  .projects {
+    margin-top: 0;
+
+    .project {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(2rem, 5vh, 3rem);
+      margin-bottom: clamp(2rem, 5vh, 3rem);
+
+      .project-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1rem;
+        padding: var(--padding-base);
+        background-color: var(--color-green-100);
+        border-radius: var(--border-radius-card);
+
+        & h2 {
+          font-size: var(--size-lg);
+        }
+
+        & h3 {
+          font-size: var(--size-base);
+        }
+
+        & p {
+          font-size: var(--size-xs);
+        }
+      }
+
+      &:nth-of-type(even) .project-info {
+        background-color: var(--color-yellow);
+      }
+
+      @media (min-width: 1024px) {
+        & {
+          flex-direction: row;
+        }
+
+        & .project-info,
+        & .project-image-carousel {
+          width: 50%;
+          height: 50vh;
+          overflow: auto;
+        }
+
+        &:nth-of-type(even) .project-info {
+          order: 2;
+        }
+
+        &:nth-of-type(even) .project-image-carousel {
+          order: 1;
+        }
+      }
+
+      .project-image-carousel .image {
+        height: 50vh;
+        object-fit: cover;
+        border-radius: var(--border-radius-card);
+      }
+    }
+  }
+</style>
