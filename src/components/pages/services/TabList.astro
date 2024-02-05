@@ -5,17 +5,11 @@ const currentPath = Astro.url.pathname
 ---
 
 <nav class="services-navigation" aria-label="Services navigation">
-  <ul role="tablist">
+  <ul>
     {
-      services.map((service, index) => (
+      services.map((service) => (
         <li>
-          <a
-            role="tab"
-            id={`tab-${index}`}
-            aria-controls={`panel-${index}`}
-            aria-selected={currentPath === service.url}
-            href={service.url}
-          >
+          <a href={service.url} aria-current={currentPath === service.url}>
             {service.title}
           </a>
         </li>
@@ -59,7 +53,7 @@ const currentPath = Astro.url.pathname
       transition: all var(--transition-normal);
 
       &:hover,
-      &[aria-selected='true'] {
+      &[aria-current='true'] {
         color: var(--color-white);
         border-bottom: 2px solid var(--color-white);
       }

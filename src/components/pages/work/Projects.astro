@@ -1,8 +1,14 @@
 ---
 import { Picture } from 'astro:assets'
+import Icon from 'astro-icon'
+
+// TODO: Replace placeholder images
 import imageOne from '../../../assets/1.png'
 import imageTwo from '../../../assets/2.png'
 import imageThree from '../../../assets/3.png'
+import imageFour from '../../../assets/4.png'
+import imageFive from '../../../assets/5.png'
+import imageSix from '../../../assets/matty.jpg'
 
 const projectData = [
   {
@@ -21,7 +27,7 @@ const projectData = [
     year: '2023',
     results:
       '66th & Brynes was able to increase sales by 30% in the first quarter of 2023 for Hot Company and we are excited to continue to work with them in the future.',
-    images: [imageTwo, imageThree, imageOne],
+    images: [imageFour, imageFive, imageSix],
   },
 ]
 ---
@@ -40,8 +46,20 @@ const projectData = [
             <h3>Results</h3>
             <p>{project.results}</p>
           </div>
-          <div class="project-image-carousel">
-            <Picture src={project.images[0]} alt="" class="image" />
+          <div class="carousel">
+            <div class="carousel-images">
+              <Picture src={project.images[0]} alt="" class="image" />
+              <Picture src={project.images[1]} alt="" class="image" />
+              <Picture src={project.images[2]} alt="" class="image" />
+            </div>
+            <div class="carousel-navigation">
+              <button class="previous">
+                <Icon name="chevron-left" />
+              </button>
+              <button class="next">
+                <Icon name="chevron-right" />
+              </button>
+            </div>
           </div>
         </div>
       )
@@ -64,6 +82,7 @@ const projectData = [
         flex-direction: column;
         justify-content: center;
         gap: 1rem;
+        height: 50vh;
         padding: var(--padding-base);
         background-color: var(--color-green-100);
         border-radius: var(--border-radius-card);
@@ -91,26 +110,146 @@ const projectData = [
         }
 
         & .project-info,
-        & .project-image-carousel {
+        & .carousel {
           width: 50%;
-          height: 50vh;
-          overflow: auto;
         }
 
         &:nth-of-type(even) .project-info {
           order: 2;
         }
 
-        &:nth-of-type(even) .project-image-carousel {
+        &:nth-of-type(even) .carousel {
           order: 1;
         }
       }
 
-      .project-image-carousel .image {
+      .carousel {
+        position: relative;
         height: 50vh;
-        object-fit: cover;
-        border-radius: var(--border-radius-card);
+
+        & .carousel-images {
+          display: flex;
+          gap: 1rem;
+          height: 100%;
+          scroll-behavior: smooth;
+          scroll-snap-type: x mandatory;
+          user-select: none;
+          overflow-x: scroll;
+          overflow-y: hidden;
+          border-radius: var(--border-radius-card);
+
+          & .image {
+            height: 100%;
+            width: 400px;
+            object-fit: cover;
+            scroll-snap-align: center;
+            border-radius: var(--border-radius-card);
+
+            @media (min-width: 768px) {
+              & {
+                width: 500px;
+              }
+            }
+          }
+
+          /* hide Safari + Chrome scroll bar */
+          &::-webkit-scrollbar {
+            display: none;
+          }
+
+          /* hide Firefox scroll bar */
+          & {
+            scrollbar-width: none;
+          }
+        }
+
+        & .carousel-navigation {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          & button {
+            position: absolute;
+            bottom: -2%;
+            padding: 1rem;
+            background-color: var(--color-white-transparent);
+            border: 1px solid var(--color-green-200);
+            border-radius: 50%;
+            box-shadow: var(--box-shadow-normal);
+            cursor: pointer;
+            transition: all var(--transition-normal);
+
+            @media (min-width: 768px) {
+              & {
+                top: 50%;
+                transform: translateY(-50%);
+                bottom: auto;
+              }
+            }
+
+            &:hover {
+              background-color: var(--color-white);
+            }
+
+            &.previous {
+              left: -2%;
+            }
+
+            &.next {
+              right: -2%;
+            }
+
+            & [astro-icon] {
+              height: 1.5rem;
+              width: 1.5rem;
+            }
+          }
+        }
       }
     }
   }
 </style>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const carousels = document.querySelectorAll('.carousel')
+
+    carousels.forEach((carousel) => {
+      const carouselImages = carousel.querySelector('.carousel-images') as HTMLElement
+      const previousButton = carousel.querySelector('.previous') as HTMLButtonElement
+      const nextButton = carousel.querySelector('.next') as HTMLButtonElement
+
+      /**
+       * Handle the next button click event
+       */
+      function handleNext() {
+        carouselImages.scrollLeft += 500
+
+        // Check if user reached the end of the scroll
+        const userCompletedScroll =
+          carouselImages.scrollLeft >= carouselImages.scrollWidth - carouselImages.clientWidth
+
+        if (userCompletedScroll) {
+          carouselImages.scrollLeft = 0
+        }
+      }
+
+      /**
+       * Handle the previous button click event
+       */
+      function handlePrevious() {
+        carouselImages.scrollLeft -= 500
+
+        // Check if user reached the end of the scroll
+        const userCompletedScroll = carouselImages.scrollLeft <= 0
+
+        if (userCompletedScroll) {
+          carouselImages.scrollLeft = carouselImages.scrollWidth - carouselImages.clientWidth
+        }
+      }
+
+      previousButton?.addEventListener('click', handlePrevious)
+      nextButton?.addEventListener('click', handleNext)
+    })
+  })
+</script>

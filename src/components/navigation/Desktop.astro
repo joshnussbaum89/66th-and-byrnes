@@ -12,7 +12,7 @@ const currentPath = Astro.url.pathname
         class="site-link"
         href="/services/influencer-strategy"
         aria-label="Services"
-        aria-selected={currentPath.includes('/services')}>Services</a
+        aria-current={currentPath.includes('/services')}>Services</a
       >
     </li>
     <li data-path="work">
@@ -20,7 +20,7 @@ const currentPath = Astro.url.pathname
         class="site-link"
         href="/work"
         aria-label="Work"
-        aria-selected={currentPath.includes('/work')}>Work</a
+        aria-current={currentPath.includes('/work')}>Work</a
       >
     </li>
     <li data-path="about">
@@ -28,7 +28,7 @@ const currentPath = Astro.url.pathname
         class="site-link"
         href="/about"
         aria-label="About"
-        aria-selected={currentPath.includes('/about')}>About</a
+        aria-current={currentPath.includes('/about')}>About</a
       >
     </li>
   </ul>

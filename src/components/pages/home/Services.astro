@@ -1,6 +1,7 @@
 ---
 import TextContent from '../../TextContent.astro'
 import InfoCard from '../../InfoCard.astro'
+import Icon from 'astro-icon'
 import services from '../../../../public/services.json'
 ---
 
@@ -14,21 +15,28 @@ import services from '../../../../public/services.json'
     class="text-content-custom"
   />
 
-  <div class="service-cards">
-    {
-      services.map((service) => {
-        return (
-          <InfoCard
-            title={service.title}
-            description={service.description}
-            icon={service.icon}
-            ctaText="Learn More"
-            ctaLink={service.url}
-            backgroundColor={service.backgroundColor}
-          />
-        )
-      })
-    }
+  <div class="services-container">
+    <div class="service-cards">
+      {
+        services.map((service) => {
+          return (
+            <InfoCard
+              title={service.title}
+              description={service.description}
+              icon={service.icon}
+              ctaText="Learn More"
+              ctaLink={service.url}
+              backgroundColor={service.backgroundColor}
+              class="info-card-custom"
+            />
+          )
+        })
+      }
+    </div>
+    <div class="services-navigation">
+      <button class="previous"><Icon name="chevron-left" /></button>
+      <button class="next"><Icon name="chevron-right" /></button>
+    </div>
   </div>
 </section>
 
@@ -37,30 +45,93 @@ import services from '../../../../public/services.json'
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--section-spacing-base);
-  }
 
-  @media (min-width: 1024px) {
-    .services {
-      grid-template-columns: repeat(2, 1fr);
+    @media (min-width: 1024px) {
+      & {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      & .text-content-custom {
+        align-items: flex-start;
+        text-align: left;
+      }
     }
   }
 
-  @media (min-width: 1024px) {
-    .text-content-custom {
-      align-items: flex-start;
-      text-align: left;
+  .services-container {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+
+    & .services-navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      & button {
+        position: absolute;
+        bottom: -2%;
+        padding: 1rem;
+        background-color: var(--color-white-transparent);
+        border: 1px solid var(--color-green-200);
+        border-radius: 50%;
+        box-shadow: var(--box-shadow-normal);
+        cursor: pointer;
+        transition: all var(--transition-normal);
+
+        @media (min-width: 768px) {
+          & {
+            top: 50%;
+            transform: translateY(-50%);
+            bottom: auto;
+          }
+        }
+
+        &:hover {
+          background-color: var(--color-white);
+        }
+
+        &.previous {
+          left: -2%;
+        }
+
+        &.next {
+          right: -2%;
+        }
+
+        & [astro-icon] {
+          height: 1.5rem;
+          width: 1.5rem;
+        }
+      }
     }
   }
 
   .service-cards {
+    width: 100%;
     display: grid;
     grid-auto-flow: column;
     align-items: center;
     gap: 1rem;
-    overflow-y: auto;
-    cursor: grab;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    overflow-x: scroll;
+    overflow-y: hidden;
     user-select: none;
     border-radius: var(--border-radius-card);
+
+    & .info-card-custom {
+      width: 350px;
+      height: 350px;
+      scroll-snap-align: center;
+
+      @media (min-width: 768px) {
+        & {
+          width: 400px;
+          height: 400px;
+        }
+      }
+    }
 
     /* hide Safari + Chrome scroll bar */
     &::-webkit-scrollbar {
@@ -68,35 +139,48 @@ import services from '../../../../public/services.json'
     }
 
     /* hide Firefox scroll bar */
-    scrollbar-width: none;
+    & {
+      scrollbar-width: none;
+    }
   }
 </style>
 
 <script>
   document.addEventListener('astro:page-load', () => {
     const serviceCards = document.querySelector('.service-cards') as HTMLElement
+    const previousButton = document.querySelector('.previous') as HTMLButtonElement
+    const nextButton = document.querySelector('.next') as HTMLButtonElement
 
-    let isDragging = false
-    let startX = 0
-    let scrollLeft = 0
+    /**
+     * Handle the next button click event
+     */
+    function handleNext() {
+      serviceCards.scrollLeft += 400
 
-    serviceCards?.addEventListener('mousedown', (e) => {
-      isDragging = true
-      startX = e.pageX - serviceCards.offsetLeft
-      scrollLeft = serviceCards.scrollLeft
-    })
+      // Check if user reached the end of the scroll
+      const userCompletedScroll =
+        serviceCards.scrollLeft >= serviceCards.scrollWidth - serviceCards.clientWidth
 
-    serviceCards?.addEventListener('mouseleave', () => (isDragging = false))
-    serviceCards?.addEventListener('mouseup', () => (isDragging = false))
+      if (userCompletedScroll) {
+        serviceCards.scrollLeft = 0
+      }
+    }
 
-    serviceCards?.addEventListener('mousemove', (e) => {
-      if (!isDragging) return
-      e.preventDefault()
+    /**
+     * Handle the previous button click event
+     */
+    function handlePrevious() {
+      serviceCards.scrollLeft -= 400
 
-      // Move horizontally
-      const x = e.pageX - serviceCards.offsetLeft
-      const walk = (x - startX) * 2 // Adjust the sensitivity of the drag
-      serviceCards.scrollLeft = scrollLeft - walk
-    })
+      // Check if user reached the end of the scroll
+      const userCompletedScroll = serviceCards.scrollLeft <= 0
+
+      if (userCompletedScroll) {
+        serviceCards.scrollLeft = serviceCards.scrollWidth - serviceCards.clientWidth
+      }
+    }
+
+    previousButton?.addEventListener('click', handlePrevious)
+    nextButton?.addEventListener('click', handleNext)
   })
 </script>

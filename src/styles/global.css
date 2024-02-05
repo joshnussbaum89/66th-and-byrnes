@@ -203,7 +203,7 @@ section {
   transform: scaleX(1);
 }
 
-nav:first-of-type .site-link[aria-selected='true']::before {
+nav:first-of-type .site-link[aria-current='true']::before {
   content: '';
   position: absolute;
   width: 100%;
