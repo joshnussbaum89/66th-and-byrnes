@@ -107,11 +107,13 @@ const projectData = [
       @media (min-width: 1024px) {
         & {
           flex-direction: row;
+          justify-content: space-between;
         }
 
         & .project-info,
         & .carousel {
-          width: 50%;
+          /* Fixes uneven columns */
+          width: calc(51.5% - clamp(2rem, 5vh, 3rem));
         }
 
         &:nth-of-type(even) .project-info {
