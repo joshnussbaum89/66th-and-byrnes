@@ -1,0 +1,41 @@
+---
+import { Picture } from 'astro:assets'
+
+export interface Props {
+  id: string
+  title: string
+  description: string
+  image: ImageMetadata
+  imageAlt: string
+}
+
+const { id, title, description, image, imageAlt } = Astro.props
+---
+
+<section id={id} class="panel">
+  <h2>{title}</h2>
+  <p>{description}</p>
+  <Picture class="image" src={image} formats={['avif', 'webp']} alt={imageAlt} />
+</section>
+
+<style>
+  .panel {
+    max-width: var(--max-width-medium);
+    text-align: center;
+
+    & h2 {
+      margin-bottom: 2rem;
+    }
+
+    & p {
+      margin-bottom: var(--section-spacing-base);
+    }
+
+    & .image {
+      max-height: 650px;
+      object-fit: cover;
+      border-radius: var(--border-radius-card);
+      box-shadow: var(--box-shadow-normal);
+    }
+  }
+</style>
