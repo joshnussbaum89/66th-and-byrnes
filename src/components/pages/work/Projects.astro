@@ -77,22 +77,27 @@ const projectData = [
       gap: clamp(2rem, 5vh, 3rem);
       margin-bottom: clamp(2rem, 5vh, 3rem);
 
+      .project-info,
+      .carousel {
+        height: 55vh;
+      }
+
       .project-info {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 1rem;
-        height: 50vh;
-        padding: var(--padding-base);
+        padding: 2rem;
+        overflow: auto;
         background-color: var(--color-green-100);
         border-radius: var(--border-radius-card);
 
+        & > * {
+          margin-bottom: 1rem;
+        }
+
         & h2 {
-          font-size: var(--size-lg);
+          font-size: clamp(var(--size-base), 7vw, var(--size-lg));
         }
 
         & h3 {
-          font-size: var(--size-base);
+          font-size: clamp(var(--size-sm), 3vw, var(--size-base));
         }
 
         & p {
@@ -127,7 +132,6 @@ const projectData = [
 
       .carousel {
         position: relative;
-        height: 50vh;
 
         & .carousel-images {
           display: flex;
@@ -217,9 +221,9 @@ const projectData = [
     const carousels = document.querySelectorAll('.carousel')
 
     carousels.forEach((carousel) => {
-      const carouselImages = carousel.querySelector('.carousel-images') as HTMLElement
-      const previousButton = carousel.querySelector('.previous') as HTMLButtonElement
-      const nextButton = carousel.querySelector('.next') as HTMLButtonElement
+      const carouselImages = carousel.querySelector('.carousel-images') as HTMLDivElement
+      const previousButton = carousel.querySelector('.previous')
+      const nextButton = carousel.querySelector('.next')
 
       /**
        * Handle the next button click event

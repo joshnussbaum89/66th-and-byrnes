@@ -74,7 +74,8 @@
 
 html {
   scroll-behavior: smooth;
-  -webkit-text-size-adjust: none;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-green-200) var(--color-white);
 }
 
 img,
